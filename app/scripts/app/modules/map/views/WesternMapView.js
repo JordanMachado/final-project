@@ -5,7 +5,7 @@ var WesternMapView = AbstractMapView.extend({
 	className: AbstractMapView.prototype.className+ '-western',
 
 	initialize:function() {
-		console.log('initialized wester')
+		console.log('initialized wester');
 		AbstractMapView.prototype.initialize.call(this);
 	}
 });

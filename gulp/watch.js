@@ -12,16 +12,16 @@ var browserify = require('browserify'),
 gulp.task('watch', function() {
 
    // watch for changes
-  gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
-    'app/images/**/*',
-    '.tmp/fonts/**/*'
-  ]).on('change', rebundle);
+  // gulp.watch([
+  //   'app/*.html',
+  //   'app/scripts/**/*.js',
+  //   'app/images/**/*',
+  //   '.tmp/fonts/**/*'
+  // ]).on('change', rebundle);
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  // gulp.watch('app/styles/**/*.scss', ['styles']);
+  // gulp.watch('app/fonts/**/*', ['fonts']);
+  // gulp.watch('bower.json', ['wiredep', 'fonts']);
 
   var b = browserify("./app/scripts/main.js",
     {
@@ -33,11 +33,15 @@ gulp.task('watch', function() {
   bundler.on('update', rebundle);
  
   function rebundle() {
-    reload();
-    return bundler.bundle()
+
+      console.log('rebundle')
+      return bundler.bundle()
       .on('error', handleErrors)
       .pipe(source('bundle.js'))
-      .pipe(gulp.dest(('.tmp/js')));
+      .pipe(gulp.dest(('.tmp/js')))
+      .pipe(reload());
+
+    
   }
  
   return rebundle();

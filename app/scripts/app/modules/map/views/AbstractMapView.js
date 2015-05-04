@@ -15,6 +15,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	template:_.template(""),
 
 	initialize:function() {
+		console.log('yo')
 		// temporary load in abstract but have to load all assets during the launch of the application
 		var loader = PIXI.loader;
 		loader
@@ -22,6 +23,7 @@ var AbstractMapView = Marionette.ItemView.extend({
     		.load(this.onAssetsLoaded.bind(this));
 	},
 	onAssetsLoaded:function() {
+		console.log('yo')
 		this.initializePIXI();
 		this.$el.append(this.renderer.view);
 		this.animate();
