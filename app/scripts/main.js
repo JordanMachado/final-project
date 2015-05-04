@@ -10,7 +10,6 @@ window.DEBUG = true;
 var main = {
 	initialize:function() {
 		$(document).ready(main.onReady);
-		console.log('OK TA MERE')
 	},
 	onReady:function() {
 		App.start({container:'#App',loader:'#loader'})

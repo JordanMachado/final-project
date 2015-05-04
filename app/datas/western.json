@@ -1,0 +1,17 @@
+{
+	"title": "western map",
+	"components": [{
+		"type": "rock",
+		"config": {
+			"x": 2300,
+			"y": 1500
+		}
+	}, {
+		"type": "rock",
+		"config": {
+			"x": 100,
+			"y": 100
+		}
+
+	}]
+}

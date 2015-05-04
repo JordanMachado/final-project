@@ -1,14 +1,12 @@
-
-
+var Backbone = require('backbone');
+Backbone.$ = require('jquery');
+var Marionette = require('backbone.marionette');
 
 // //helper
 var helper = document.querySelector('.helper');
 helper.style.display = 'none';
 
 
-var Backbone = require('backbone');
-Backbone.$ = require('jquery');
-var Marionette = require('backbone.marionette');
 
 var App = new Marionette.Application({
 	getCurrentRoute: function() {
@@ -47,7 +45,7 @@ var AppRouter = Backbone.Router.extend({
 App.router = new AppRouter();
 
 App.router.on('route:index', function() {
-	console.log('couczzefezfe')
+	console.log('index')
 });
 
 
