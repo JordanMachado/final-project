@@ -39,7 +39,7 @@ gulp.task('watch', function() {
       .on('error', handleErrors)
       .pipe(source('bundle.js'))
       .pipe(gulp.dest(('.tmp/js')))
-      .pipe(reload());
+      .pipe(reload({stream: true}))
 
     
   }

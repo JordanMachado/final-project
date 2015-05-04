@@ -47,7 +47,7 @@ var AppRouter = Backbone.Router.extend({
 App.router = new AppRouter();
 
 App.router.on('route:index', function() {
-	console.log('coucou')
+	console.log('couczzefezfe')
 });
 
 
