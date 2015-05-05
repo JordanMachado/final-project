@@ -4,6 +4,7 @@
     "node": ">=0.10.0"
   },
   "devDependencies": {
+    "aliasify": "^1.7.2",
     "autoprefixer-core": "^4.0.2",
     "backbone.babysitter": "^0.1.6",
     "browser-sync": "^1.8.2",
@@ -35,8 +36,10 @@
   "dependencies": {
     "backbone": "^1.1.2",
     "backbone.marionette": "^2.4.1",
+    "gsap": "^1.16.1",
     "inherits": "^2.0.1",
     "jquery": "^2.1.4",
+    "pixi-spine": "^1.0.3",
     "pixi.js": "^3.0.2",
     "underscore": "^1.8.3"
   }

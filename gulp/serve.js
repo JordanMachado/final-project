@@ -4,7 +4,7 @@ var browserSync = require('browser-sync');
 
 
 
-gulp.task('serve', ['styles', 'fonts','watch'], function () {
+gulp.task('serve', ['styles', 'fonts','watch','browserify'], function () {
   browserSync({
     notify: false,
     port: 9000,

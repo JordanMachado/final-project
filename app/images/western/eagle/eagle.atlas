@@ -1,0 +1,26 @@
+
+eagle.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 116, 79
+  size: 171, 44
+  orig: 171, 44
+  offset: 0, 0
+  index: -1
+legs
+  rotate: false
+  xy: 116, 35
+  size: 31, 42
+  orig: 31, 42
+  offset: 0, 0
+  index: -1
+wings
+  rotate: false
+  xy: 2, 2
+  size: 112, 121
+  orig: 112, 122
+  offset: 0, 1
+  index: -1

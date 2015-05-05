@@ -1,26 +1,20 @@
-
+var Const = require('Const');
 var inherits = require('inherits');
 var AbstractComponent = require('./AbstractComponent');
+var Resources = require('Resources');
 // var _ = require('underscore');
 
-inherits(RockComponent,AbstractComponent);
+inherits(RockComponent, AbstractComponent);
 
 
 function RockComponent(options) {
-	console.log(options)
-	AbstractComponent.call(this,options);
+	AbstractComponent.call(this, options);
 }
 
+RockComponent.prototype.initialize = function(options) {
+	this.texturePath = Resources.datas.rock.url;
+	AbstractComponent.prototype.initialize.call(this, options);
 
-// console.log(AbstractComponent)
-// var RockComponent = _.extend({
-// 	initialize:function() {
-// 		AbstractComponent.call(this);
-// 		console.log('initialize  RockComponent')
-// 	}
-
-// },AbstractComponent);
-
-// console.log(AbstractComponent.prototype)
+}
 
 module.exports = RockComponent;

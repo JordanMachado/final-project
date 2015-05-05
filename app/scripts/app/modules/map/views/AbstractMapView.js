@@ -2,8 +2,10 @@ var Backbone = require('backbone');
 Backbone.$ = require('jquery');
 var _ = require('underscore');
 var PIXI = require('pixi.js');
+var spine = require('pixi-spine');
 var ComponentFactory = require('./components/ComponentFactory');
-
+var Resources = require('Resources');
+window.Resources = Resources;
 var Marionette = require('backbone.marionette');
 
 
@@ -14,20 +16,17 @@ var AbstractMapView = Marionette.ItemView.extend({
 	template: _.template(""),
 
 	initialize: function() {
-		// temporary load in abstract but have to load all assets during the launch of the application
-		var loader = PIXI.loader;
-		loader
-			.add('images/map.jpg')
-			.load(this.onAssetsLoaded.bind(this));
-	},
-	onAssetsLoaded: function() {
+		// console.log(Resources.datas.fishBlue.spineData)
+		this.animation = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
 		this.initializePIXI();
-		this.$el.append(this.renderer.view);
-		this.animate();
+
 	},
 
 	onRender: function() {},
 	onShow: function() {
+		this.$el.append(this.renderer.view);
+		this.animate();
+		
 
 	},
 	// initialize the pixi scene
@@ -56,7 +55,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	},
 	createMap: function() {
 		/* MAP */
-		var texture = PIXI.Texture.fromImage('images/map' + this.univers + '.jpg');
+		var texture = PIXI.Texture.fromImage(Resources.datas.mapView.url);
 		var map = new PIXI.Sprite(texture);
 		this.container.addChild(map);
 
@@ -84,6 +83,26 @@ var AbstractMapView = Marionette.ItemView.extend({
 			component.addToContainer(this.container);
 
 		}
+		
+		
+		this.animation.state.setAnimationByName(1,"jump-01",true)
+		var containerAnim = new PIXI.Container();
+		containerAnim.addChild(this.animation)
+
+		var graphics = new PIXI.Graphics();
+		graphics.beginFill(0xFF3300);
+		graphics.lineStyle(2, 0x0000FF, 1);
+		graphics.drawRect(-containerAnim.width, -170, containerAnim.width*4, 170);
+		
+		containerAnim.addChild(graphics)
+		containerAnim.mask = graphics;
+		containerAnim.on('mousedown',function(){
+			console.log('mouse douw fish')
+		})
+		containerAnim.position.x = 200;
+		containerAnim.position.y = 2200;
+		window.containerAnim = containerAnim;
+		// this.container.addChild(containerAnim);
 		
 
 	},

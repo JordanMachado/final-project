@@ -50,7 +50,7 @@ App.router.on('route:index', function() {
 
 
 var PIXI = require('pixi.js');
-var MathFX = require('../utils/MathFX')
+// var MathFX = require('../utils/MathFX')
 
 
 /* LOADER */

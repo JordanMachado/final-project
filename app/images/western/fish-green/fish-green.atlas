@@ -1,0 +1,54 @@
+
+fish-green.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body_01
+  rotate: true
+  xy: 43, 29
+  size: 33, 38
+  orig: 33, 38
+  offset: 0, 0
+  index: -1
+body_02
+  rotate: false
+  xy: 83, 30
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+body_03
+  rotate: false
+  xy: 2, 2
+  size: 29, 24
+  orig: 29, 24
+  offset: 0, 0
+  index: -1
+body_04
+  rotate: true
+  xy: 112, 33
+  size: 29, 10
+  orig: 29, 10
+  offset: 0, 0
+  index: -1
+body_05
+  rotate: false
+  xy: 60, 4
+  size: 28, 23
+  orig: 28, 23
+  offset: 0, 0
+  index: -1
+flipper
+  rotate: false
+  xy: 43, 2
+  size: 15, 25
+  orig: 15, 25
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 28
+  size: 39, 34
+  orig: 39, 34
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,36 @@
+{
+	"datas": [
+		{
+			"name":"mapView",
+			"path":"images/western/map.jpg"
+		},
+		{
+			"name":"waterClickable",
+			"path":"images/western/water-clickable-zone.png"
+		},
+		{
+			"name":"rock",
+			"path":"images/western/rock.png"
+		},
+		{
+			"name":"cactus",
+			"path":"images/western/cactus.png"
+		},
+		{
+			"name":"fishBlue",
+			"path":"images/western/fish-blue/fish-blue.json"
+		},
+		{
+			"name":"eagle",
+			"path":"images/western/eagle/eagle.json"
+		},
+		{
+			"name":"fishGreen",
+			"path":"images/western/fish-green/fish-green.json"
+		},
+		{
+			"name":"fishPink",
+			"path":"images/western/fish-pink/fish-pink.json"
+		}
+	]
+}
