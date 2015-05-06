@@ -4,7 +4,7 @@ var Marionette = require('backbone.marionette');
 
 // //helper
 var helper = document.querySelector('.helper');
-helper.style.display = 'none';
+// helper.style.display = 'none';
 
 
 
@@ -20,7 +20,8 @@ var App = new Marionette.Application({
 });
 
 App.addRegions({
-	mapRegion:'#map'
+	mapRegion:'#map',
+	cockPitRegion:'#cockpit'
 });
 
 App.on('start', function(options) {
@@ -33,7 +34,9 @@ App.on('start', function(options) {
 
 App.addInitializer(function(options) {
 	//call all modules
-	require('./modules/map/Map');
+	
+	require('./modules/cockpit/CockPit');
+	// require('./modules/map/Map');
 
 });
 

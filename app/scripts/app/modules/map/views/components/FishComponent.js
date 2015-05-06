@@ -33,7 +33,8 @@ FishComponent.prototype.initialize = function(options) {
 
 	this.graphic.interactive = true;
 	this.graphic
-		.on('mousedown', this.animate.bind(this));
+		.on('mousedown', this.animate.bind(this))
+		.on('touchstart', this.animate.bind(this))
 
 	/* 
 	 * Create fish container and
@@ -76,7 +77,7 @@ FishComponent.prototype.animate = function(e) {
 	var currentAnimation = Math.floor(Math.random() * animationFish.length);
 	animationFish[currentAnimation].visible = true;
 	animationFish[currentAnimation].state.setAnimationByName(1, animationNames[Math.floor(Math.random() * animationNames.length)], false);
-	var random = Math.random() * (1.2 - 0.6) + 0.6;
+	var random = Math.random() * (0.9 - 0.6) + 0.6;
 	if (Math.random() > 0.5) {
 
 		this.containerAnim.scale.x = -random;
@@ -85,8 +86,8 @@ FishComponent.prototype.animate = function(e) {
 		this.containerAnim.scale.x = this.containerAnim.scale.y = random;
 	}
 
-	this.containerAnim.position.x = e.data.getLocalPosition(this.container).x;
-	this.containerAnim.position.y = e.data.getLocalPosition(this.container).y;
+	this.containerAnim.position.x = e.data.getLocalPosition(this.mapContainer).x;
+	this.containerAnim.position.y = e.data.getLocalPosition(this.mapContainer).y;
 
 }
 

@@ -1,27 +1,32 @@
 var Backbone = require('backbone');
 Backbone.$ = require('jquery');
 var _ = require('underscore');
+var Marionette = require('backbone.marionette');
+
 var PIXI = require('pixi.js');
 var spine = require('pixi-spine');
 var ComponentFactory = require('./components/ComponentFactory');
+var ThreeDSound = require('./sound/ThreeDSound');
 var Resources = require('Resources');
-window.Resources = Resources;
-var Marionette = require('backbone.marionette');
+
+
 
 
 
 var AbstractMapView = Marionette.ItemView.extend({
 	className: 'map-view',
 	univers: '',
-	template: _.template(""),
+	template: _.template(''),
 
 	initialize: function() {
-		// console.log(Resources.datas.fishBlue.spineData)
+		this.components = [];
+		this.sounds = [];
+
 		this.animation = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
 		this.initializePIXI();
+		
 
 	},
-
 	onRender: function() {},
 	onShow: function() {
 		this.$el.append(this.renderer.view);
@@ -44,8 +49,8 @@ var AbstractMapView = Marionette.ItemView.extend({
 			.on('mouseupoutside', this.onDragEndContainer)
 			.on('touchend', this.onDragEndContainer)
 			.on('touchendoutside', this.onDragEndContainer)
-			.on('mousemove', this.onDragMoveContainer)
-			.on('touchmove', this.onDragMoveContainer);
+			.on('mousemove', this.onDragMoveContainer.bind(this))
+			.on('touchmove', this.onDragMoveContainer.bind(this));
 
 
 		this.stage.addChild(this.container);
@@ -68,43 +73,38 @@ var AbstractMapView = Marionette.ItemView.extend({
 			y: this.container.height - window.innerHeight
 		}
 
-		this.createComponents();
+		
+		this.createSounds();
 
 
 	},
 	createComponents: function() {
 
 
-		this.components = this.model.get('components');
-		for(var i =0,ln = this.components.length;i<ln;i++) {
+		var components = this.model.get('components');
+		for(var i =0,ln = components.length;i<ln;i++) {
 			
-			var ComponentClass = ComponentFactory.build(this.components[i]);
-			var component = new ComponentClass(this.components[i].config);
+			var ComponentClass = ComponentFactory.build(components[i]);
+			var component = new ComponentClass(components[i].config);
 			component.addToContainer(this.container);
-
+			this.components.push(component);
 		}
 		
-		
-		this.animation.state.setAnimationByName(1,"jump-01",true)
-		var containerAnim = new PIXI.Container();
-		containerAnim.addChild(this.animation)
 
-		var graphics = new PIXI.Graphics();
-		graphics.beginFill(0xFF3300);
-		graphics.lineStyle(2, 0x0000FF, 1);
-		graphics.drawRect(-containerAnim.width, -170, containerAnim.width*4, 170);
-		
-		containerAnim.addChild(graphics)
-		containerAnim.mask = graphics;
-		containerAnim.on('mousedown',function(){
-			console.log('mouse douw fish')
-		})
-		containerAnim.position.x = 200;
-		containerAnim.position.y = 2200;
-		window.containerAnim = containerAnim;
-		// this.container.addChild(containerAnim);
-		
 
+	},
+	createSounds:function() {
+		console.log('createSounds')
+		var sounds = this.model.get('sounds');
+
+		for(var i =0,ln = sounds.length;i<ln;i++) {
+			var sound = new ThreeDSound(sounds[i])
+			sound.addToContainer(this.container);
+			this.sounds.push(sound)
+			console.log(sound)
+		}
+
+		this.createComponents();
 	},
 	animate: function() {
 		requestAnimationFrame(this.animate.bind(this));
@@ -133,20 +133,25 @@ var AbstractMapView = Marionette.ItemView.extend({
 	},
 	onDragMoveContainer: function(e) {
 
-		if (this.dragging) {
+		if (this.container.dragging) {
+
 			// set localPositionToStage the center of the triangle of the touches 
-			var localPositionToStage = e.data.getLocalPosition(this.parent);
+			var localPositionToStage = e.data.getLocalPosition(this.container.parent);
+
+			for(var i =0,ln = this.sounds.length;i<ln;i++) {
+				this.sounds[i].checkPosition()
+			}
 
 			var newPosition = {
-					x: localPositionToStage.x - this.initialPosition.x,
-					y: localPositionToStage.y - this.initialPosition.y
+					x: localPositionToStage.x - this.container.initialPosition.x,
+					y: localPositionToStage.y - this.container.initialPosition.y
 				}
-				// if the new position is in the bounding box define by the difference of the size window/container
-			if (newPosition.x < 0 && newPosition.x > -this.spacing.x) {
-				this.position.x = newPosition.x;
+			// if the new position is in the bounding box define by the difference of the size window/container
+			if (newPosition.x < 0 && newPosition.x > -this.container.spacing.x) {
+				this.container.position.x = newPosition.x;
 			}
-			if (newPosition.y < 0 && newPosition.y > -this.spacing.y) {
-				this.position.y = newPosition.y;
+			if (newPosition.y < 0 && newPosition.y > -this.container.spacing.y) {
+				this.container.position.y = newPosition.y;
 			}
 
 		}

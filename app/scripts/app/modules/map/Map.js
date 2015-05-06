@@ -1,8 +1,8 @@
 var App = require('../../App');
+
 /*
  * Module for managing Map exercice
  */
-
 
 var datas = require('../../../../datas/western.json');
 

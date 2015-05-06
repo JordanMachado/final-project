@@ -9,45 +9,32 @@ function EagleComponent(options) {
 }
 
 EagleComponent.prototype.initialize = function(options) {
-
-	console.log('EagleComponent')
+	this.tick = 0;
 	/* 
-	 * Create fish container and
+	 * Create eagle container and
 	 */
 
-	this.graphic = new PIXI.Container();
-
-
-	this.animation = new PIXI.spine.Spine(Resources.datas.eagle.spineData);
-	this.animation.state.setAnimationByName(1, "stable", true);
-	this.graphic.addChild(this.animation);
-
+	this.graphic = new PIXI.spine.Spine(Resources.datas.eagle.spineData);
+	this.graphic.state.setAnimationByName(1, "stable", true);
 	this.graphic.position.x = options.x;
 	this.graphic.position.y = options.y;
-
-
-
 	this.graphic.interactive = true;
 	this.graphic
 		.on('mousedown', function(){
-			this.animation.state.setAnimationByName(1, "envol", true);
+			this.graphic.state.setAnimationByName(1, "envol", true);
+			this.animate()
+		}.bind(this))
+		.on('touchstart', function(){
+			this.graphic.state.setAnimationByName(1, "envol", true);
 			this.animate()
 		}.bind(this));
-
-		// var tick  = new PIXI.ticker.Ticker();
-		// tick.addEventListener('update',function(){
-		// 	console.log('yo')
-		// })
-	
-		// tick.start();
 }
 
 EagleComponent.prototype.animate = function(e) {
+	this.tick+=0.1;
 	this.raf = requestAnimationFrame(this.animate.bind(this));
-	this.graphic.position.x = this.graphic.position.x  -4;
-	var date = Date.now();
-
-	this.graphic.position.y = this.graphic.position.y  + 2*Math.cos(date);
+	this.graphic.position.x = this.graphic.position.x  - 5;
+	this.graphic.position.y = this.graphic.position.y  + (2.1*Math.cos(this.tick));
 	if(this.graphic.x< -this.graphic.width || this.graphic.y< -this.graphic.height ) {
 		window.cancelAnimationFrame(this.raf);
 		this.mapContainer.removeChild(this.graphic);

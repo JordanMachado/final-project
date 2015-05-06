@@ -1,5 +1,5 @@
 var PIXI = require('pixi.js');
-var PIXI = require('pixi.js');
+
 var TweenMax = require('gsap');
 var Const = require('Const');
 
@@ -8,6 +8,8 @@ var Const = require('Const');
 /*
  * Abstract Component
  */
+
+'use stric';
 
 function AbstractComponent(options) {
 	this.texturePath = "images/western/rock.png";
@@ -25,6 +27,7 @@ AbstractComponent.prototype.initialize = function(options) {
 	this.graphic.interactive = true;
 	this.graphic
 		.on('mousedown', this.animate.bind(this))
+		.on('touchstart', this.animate.bind(this))
 
 }
 
@@ -48,5 +51,4 @@ AbstractComponent.prototype.animate = function() {
 	}, '-=0.2');
 }
 
-// console.log(AbstractComponent.prototype)
 module.exports = AbstractComponent;

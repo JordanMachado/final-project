@@ -14,7 +14,8 @@ gulp.task('browserify', function() {
 	var aliasifyConfig = {
 		aliases: {
 			"Const": "./app/scripts/app/utils/Const.js",
-			"Resources": "./app/scripts/app/utils/Resources.js"
+			"Resources": "./app/scripts/app/utils/Resources.js",
+			"MathFX": "./app/scripts/app/utils/MathFX.js"
 		},
 		verbose: false
 	}
