@@ -5,8 +5,8 @@ var Marionette = require('backbone.marionette');
 
 var PIXI = require('pixi.js');
 var spine = require('pixi-spine');
-var ComponentFactory = require('./components/ComponentFactory');
-var ThreeDSound = require('./sound/ThreeDSound');
+var ComponentFactory = require('ComponentFactory');
+var ThreeDSound = require('ThreeDSound');
 var Resources = require('Resources');
 
 

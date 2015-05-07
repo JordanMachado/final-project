@@ -31,6 +31,10 @@
 		{
 			"name":"fishPink",
 			"path":"images/western/fish-pink/fish-pink.json"
+		},
+		{
+			"name":"cockpit",
+			"path":"images/cockpit/cockpit.png"
 		}
 	]
 }

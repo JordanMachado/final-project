@@ -35,8 +35,8 @@ App.on('start', function(options) {
 App.addInitializer(function(options) {
 	//call all modules
 	
-	require('./modules/cockpit/CockPit');
-	// require('./modules/map/Map');
+	// require('./modules/cockpit/CockPit');
+	require('./modules/map/Map');
 
 });
 

@@ -1,0 +1,365 @@
+{
+	"title": "western map",
+	"components": [
+	{
+		"type": "button",
+		"config": {
+			"x": 55,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+				
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 85,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 115,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 145,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 175,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 205,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 65,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 95,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 125,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 155,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 185,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 215,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 875,
+			"y": 40,
+			"textures":[
+			"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 905,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 935,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 965,
+			"y": 40,
+			"textures":[
+			"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 995,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 1025,
+			"y": 40,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 860,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 890,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 920,
+			"y": 70,
+			"textures":[
+			"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 950,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 980,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-red.png",
+				"images/cockpit/btn-green.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 1010,
+			"y": 70,
+			"textures":[
+				"images/cockpit/btn-green.png",
+				"images/cockpit/btn-red.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 280,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-off.png",
+				"images/cockpit/btn-on.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 310,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-on.png",
+				"images/cockpit/btn-off.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 340,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-on.png",
+				"images/cockpit/btn-off.png"
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 740,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-on.png",
+				"images/cockpit/btn-off.png"
+				
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 770,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-off.png",
+				"images/cockpit/btn-on.png"
+				
+			]
+		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 800,
+			"y": 55,
+			"textures":[
+				"images/cockpit/btn-on.png",
+				"images/cockpit/btn-off.png"
+			]
+		}
+	}
+	],
+	"planets": [{
+		"type": "planet",
+		"config": {
+			"x":230,
+			"y":610,
+			"active":true,
+			"url":"images/cockpit/planet-01.png"
+		}
+	},
+	{
+		"type": "planet",
+		"config": {
+			"x":860,
+			"y":860,
+			"active":true,
+			"url":"images/cockpit/planet-02.png"
+		}
+	},
+	{
+		"type": "planet",
+		"config": {
+			"x":350,
+			"y":1155,
+			"active":true,
+			"url":"images/cockpit/planet-03.png"
+		}
+	}]
+}

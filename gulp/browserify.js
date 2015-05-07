@@ -15,7 +15,9 @@ gulp.task('browserify', function() {
 		aliases: {
 			"Const": "./app/scripts/app/utils/Const.js",
 			"Resources": "./app/scripts/app/utils/Resources.js",
-			"MathFX": "./app/scripts/app/utils/MathFX.js"
+			"MathFX": "./app/scripts/app/utils/MathFX.js",
+			"ComponentFactory": "./app/scripts/app/components/ComponentFactory.js",
+			"ThreeDSound": "./app/scripts/app/sound/ThreeDSound.js"
 		},
 		verbose: false
 	}
