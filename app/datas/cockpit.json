@@ -333,6 +333,56 @@
 				"images/cockpit/btn-off.png"
 			]
 		}
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 225,
+			"y": 1825,
+			"texturePath":"images/cockpit/screen-dial/",
+			"textureName":"dial_",
+			"numberOfFrame":26,
+			"autoplay":true,
+			"loop":true
+		}
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 860,
+			"y": 1825,
+			"scaleX":-1,
+			"texturePath":"images/cockpit/screen-dial/",
+			"textureName":"dial_",
+			"numberOfFrame":26,
+			"autoplay":true,
+			"loop":true
+		}
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 310,
+			"y": 1650,
+			"texturePath":"images/cockpit/dial/",
+			"textureName":"dial_",
+			"numberOfFrame":27,
+			"autoplay":true,
+			"loop":true
+		}
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 770,
+			"y": 1650,
+			"scaleX":-1,
+			"texturePath":"images/cockpit/dial/",
+			"textureName":"dial_",
+			"numberOfFrame":27,
+			"autoplay":true,
+			"loop":true
+		}
 	}
 	],
 	"planets": [{

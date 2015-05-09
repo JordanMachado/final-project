@@ -6,7 +6,7 @@ var ComponentFactory = require('ComponentFactory');
 
 var CockPitView = Marionette.ItemView.extend({
 	className: 'cockpit-view',
-	template: _.template('<img src="images/cockpit/08-Cockpit-Modele.png" alt="">'),
+	template: _.template('<img src="images/cockpit/stars.png" alt="">'),
 
 	initialize: function() {
 		this.components = [];

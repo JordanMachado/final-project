@@ -3,16 +3,19 @@
 
 //common component
 var AbstractComponent = require('./AbstractComponent');
-var FishComponent = require('./FishComponent');
+var MovieClipComponent = require('./MovieClipComponent');
+var ButtonComponent = require('./ButtonComponent');
+var DraggableComponent = require('./DraggableComponent');
+
 
 // wester component
 var RockComponent = require('./RockComponent');
 var CactusComponent = require('./CactusComponent');
 var EagleComponent = require('./EagleComponent');
+var FishComponent = require('./FishComponent');
 
 //cockpit components
 var PlanetComponent = require('./PlanetComponent');
-var ButtonComponent = require('./ButtonComponent');
 var WaveComponent = require('./WaveComponent');
 
 var ComponentFactory = {
@@ -23,6 +26,12 @@ var ComponentFactory = {
 		switch(type) {
 			case 'rock':
 				return RockComponent;
+			break;
+			case 'draggable':
+				return DraggableComponent;
+			break;
+			case 'movieclip':
+				return MovieClipComponent;
 			break;
 			case 'wave':
 				return WaveComponent;

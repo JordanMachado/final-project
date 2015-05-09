@@ -37,6 +37,9 @@ var AbstractMapView = Marionette.ItemView.extend({
 	// initialize the pixi scene
 	initializePIXI: function() {
 		this.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+		console.log(this.renderer.type == PIXI.WEBGL_RENDERER)
+		var type = (this.renderer instanceof PIXI.WebGLRenderer) ? 'webgl render' : 'canvas render'
+		console.log(type);
 		this.stage = new PIXI.Container();
 
 		// container

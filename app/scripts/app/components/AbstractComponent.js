@@ -17,7 +17,6 @@ function AbstractComponent(options) {
 }
 
 AbstractComponent.prototype.initialize = function(options) {
-	console.log(this.texturePath)
 	var texture = PIXI.Texture.fromImage(this.texturePath);
 	this.graphic = new PIXI.Sprite(texture);
 	this.graphic.position.x = options.x;

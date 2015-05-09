@@ -21,6 +21,7 @@ var App = new Marionette.Application({
 
 App.addRegions({
 	mapRegion:'#map',
+	splashRegion:'#splash',
 	cockPitRegion:'#cockpit'
 });
 
@@ -34,23 +35,38 @@ App.on('start', function(options) {
 
 App.addInitializer(function(options) {
 	//call all modules
-	
+	// require('./modules/splashscreen/Splashscreen');
 	// require('./modules/cockpit/CockPit');
 	require('./modules/map/Map');
+	
 
 });
 
 var AppRouter = Backbone.Router.extend({
 	routes: {
-		'': 'index'
+		'': 'index',
+		'intro': 'intro',
+		'experience/cockpit': 'cockpit',
+		'experience/map': 'map',
+		'experience/map/:id': 'mapWithId'
 	}
 });
 App.router = new AppRouter();
 
 App.router.on('route:index', function() {
-	console.log('index')
+	// App.SplashScreen.showSplashScreen();
 });
 
+App.router.on('route:cockpit', function() {
+
+});
+
+App.router.on('route:map', function() {
+
+});
+
+
+window.app = App;
 
 var PIXI = require('pixi.js');
 // var MathFX = require('../utils/MathFX')

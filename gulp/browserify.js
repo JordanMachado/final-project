@@ -5,6 +5,7 @@ var aliasify = require('aliasify');
 
 var browserify = require('browserify'),
 	watchify = require('watchify'),
+	stringify = require('stringify'),
 	source = require('vinyl-source-stream'),
 	handleErrors = require('./utils/handleErrors');
 
@@ -13,6 +14,7 @@ gulp.task('browserify', function() {
 
 	var aliasifyConfig = {
 		aliases: {
+			"App": "./app/scripts/app/App",
 			"Const": "./app/scripts/app/utils/Const.js",
 			"Resources": "./app/scripts/app/utils/Resources.js",
 			"MathFX": "./app/scripts/app/utils/MathFX.js",
@@ -30,6 +32,8 @@ gulp.task('browserify', function() {
 		packageCache: {}
 	});
 	b.transform(aliasify, aliasifyConfig);
+	b.transform(stringify(['.tpl']))
+
 	var bundler = watchify(b);
 
 	bundler.on('update', rebundle);

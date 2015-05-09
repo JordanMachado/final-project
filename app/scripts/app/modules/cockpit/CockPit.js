@@ -1,4 +1,4 @@
-var App = require('../../App');
+var App = require('App');
 
 /*
  * Module for managing CockPit 

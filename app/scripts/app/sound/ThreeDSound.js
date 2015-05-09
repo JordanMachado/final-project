@@ -14,7 +14,7 @@ function ThreeDSound(options) {
 ThreeDSound.prototype.initialize = function(options) {
 	AbstractSound.prototype.initialize.call(this, options);
 	this.zoneRadius = options.radius;
-	this.sound.volume = 0;	
+	// this.sound.volume = 0;	
 
 
 	if (DEBUG) {
@@ -50,7 +50,7 @@ ThreeDSound.prototype.checkPosition = function() {
 	var dist = MathFX.distance(position,{x:window.innerWidth/2,y:window.innerHeight/2})
 	
 	if(dist<this.zoneRadius) {
-		// this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
+		this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
 	}
 	if(dist<this.zoneRadius && !this.isPlaying) {
 		this.play()

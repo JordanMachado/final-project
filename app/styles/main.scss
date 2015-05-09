@@ -1,4 +1,5 @@
 
+@import "splash";
 body {
   position: absolute;
   width: 100%;
@@ -23,6 +24,7 @@ $size : 30px;
 }
 
 .cockpit-view {
+	
 	img {
 		position:absolute;
 		z-index: -1;
