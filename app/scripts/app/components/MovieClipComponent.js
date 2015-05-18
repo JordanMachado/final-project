@@ -19,13 +19,16 @@ MovieClipComponent.prototype.initialize = function(options) {
 
 
 
-	this.textures = [];
+	this.texturesClockWise = [];
 	for (var i = 0, ln = this.numberOfFrame; i < ln; i++) {
 		var texture = new PIXI.Texture.fromFrame(this.texturePath + this.textureName + i + '.png')
-		this.textures.push(texture);
+		this.texturesClockWise.push(texture);
 	}
+	this.texturesCounterClockWise = this.texturesClockWise.reverse();
 
-	this.graphic = new PIXI.extras.MovieClip(this.textures);
+	this.clockWise = true;
+
+	this.graphic = new PIXI.extras.MovieClip(this.texturesClockWise);
 	this.graphic.anchor.x = this.graphic.anchor.y = 0.5;
 	//position
 	this.graphic.position.x = options.x;
@@ -35,7 +38,8 @@ MovieClipComponent.prototype.initialize = function(options) {
 	this.graphic.scale.y = options.scaleY || 1;
 	//animationSpeed
 	this.graphic.animationSpeed = options.animationSpeed || 1;
-	this.graphic.loop = this.loop;
+	window.animationSpeed = this.graphic.animationSpeed;
+	this.graphic.loop = true;
 
 	if (options.autoplay)
 		this.graphic.play();
@@ -52,7 +56,15 @@ MovieClipComponent.prototype.initialize = function(options) {
 
 MovieClipComponent.prototype.animate = function() {
 	// AbstractComponent.prototype.animate.call(this);
-	this.graphic.play();
+
+	// this.graphic.stop();
+	console.log(this.clockWise)
+	this.graphic.textures = (this.clockWise) ? this.texturesClockWise : this.texturesCounterClockWise;
+	this.graphic.gotoAndPlay(this.graphic.textures.length-1);
+
+
+	// this.graphic.play();
+	this.clockWise = !this.clockWise;
 }
 
 module.exports = MovieClipComponent;

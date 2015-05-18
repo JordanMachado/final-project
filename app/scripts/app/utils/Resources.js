@@ -21,7 +21,7 @@ Resources.prototype.load = function(cb) {
 	loader.load(function(loader,datas){
 		this.loaded = true;
 		this.datas = datas;
-		console.log('loaded resources')
+		// console.log('loaded resources')
 		if(cb)
 			cb();
 	}.bind(this));

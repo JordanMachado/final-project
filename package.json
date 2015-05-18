@@ -38,6 +38,7 @@
     "backbone.marionette": "^2.4.1",
     "gsap": "^1.16.1",
     "inherits": "^2.0.1",
+    "jplayer": "^2.9.2",
     "jquery": "^2.1.4",
     "pixi-spine": "^1.0.3",
     "pixi.js": "^3.0.2",

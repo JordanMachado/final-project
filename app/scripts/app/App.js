@@ -20,9 +20,10 @@ var App = new Marionette.Application({
 });
 
 App.addRegions({
-	mapRegion:'#map',
+	introRegion:'#intro',
+	mapRegion:'#experience',
 	splashRegion:'#splash',
-	cockPitRegion:'#cockpit'
+	experience:'#experience'
 });
 
 App.on('start', function(options) {
@@ -38,6 +39,7 @@ App.addInitializer(function(options) {
 	// require('./modules/splashscreen/Splashscreen');
 	// require('./modules/cockpit/CockPit');
 	require('./modules/map/Map');
+	// require('./modules/intro/Intro');
 	
 
 });
@@ -55,6 +57,10 @@ App.router = new AppRouter();
 
 App.router.on('route:index', function() {
 	// App.SplashScreen.showSplashScreen();
+});
+
+App.router.on('route:intro', function() {
+	console.log('intro + tutorial')
 });
 
 App.router.on('route:cockpit', function() {

@@ -383,6 +383,17 @@
 			"autoplay":true,
 			"loop":true
 		}
+	},
+	{
+		"type": "button",
+		"config": {
+			"x": 540,
+			"y": 1810,
+			"textures":[
+				"images/cockpit/inventory-off.png",
+				"images/cockpit/inventory-on.png"
+			]
+		}
 	}
 	],
 	"planets": [{

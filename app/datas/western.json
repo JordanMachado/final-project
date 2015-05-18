@@ -53,13 +53,43 @@
 	{
 		"type": "movieclip",
 		"config": {
-			"x": 2100,
+			"x": 200,
 			"y": 1400,
 			"texturePath":"images/western/skull/",
 			"textureName":"skull_",
 			"numberOfFrame":10,
 			"animationSpeed":0.5,
 			"autoplay":true,
+			"loop":false,
+			"interactive":true
+		}
+
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 2100,
+			"y": 1400,
+			"texturePath":"images/western/fire/",
+			"textureName":"fire_",
+			"numberOfFrame":24,
+			"animationSpeed":0.5,
+			"autoplay":true,
+			"loop":true,
+			"interactive":false
+		}
+
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 2100,
+			"y": 1400,
+			"texturePath":"images/western/fire-fish/",
+			"textureName":"fire-fish_",
+			"numberOfFrame":38,
+			"animationSpeed":0.5,
+			"autoplay":false,
 			"loop":false,
 			"interactive":true
 		}

@@ -19,8 +19,9 @@ var SplashScreenView = Marionette.ItemView.extend({
 		'click @ui.button': 'onClickButton'
 	},
 	onClickButton:function() {
-		console.log('click');
-		App.navigate('/map');
+		console.log('launch tutorial');
+		App.navigate('/tutorial');
+		App.SplashScreen.hideSplashScreen();
 	}
 
 })

@@ -17,7 +17,7 @@ var CockPit = App.module('CockPit', function(CockPit, App) {
 		cockPitView = new CockPitView({
 			model: new Backbone.Model(datas)
 		});
-		App.cockPitRegion.show(cockPitView);
+		App.experience.show(cockPitView);
 	});
 });
 
