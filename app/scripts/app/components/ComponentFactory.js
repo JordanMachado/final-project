@@ -1,4 +1,3 @@
-
 // import all component class
 
 //common component
@@ -13,47 +12,50 @@ var RockComponent = require('./RockComponent');
 var CactusComponent = require('./CactusComponent');
 var EagleComponent = require('./EagleComponent');
 var FishComponent = require('./FishComponent');
+var AnimalComponent = require('./AnimalComponent');
 
 //cockpit components
 var PlanetComponent = require('./PlanetComponent');
 var WaveComponent = require('./WaveComponent');
 
 var ComponentFactory = {
-	build:function(options) {
+	build: function(options) {
 		return ComponentFactory.getComponentClass(options.type)
 	},
-	getComponentClass:function(type) {
-		switch(type) {
+	getComponentClass: function(type) {
+		switch (type) {
 			case 'rock':
 				return RockComponent;
-			break;
+				break;
 			case 'draggable':
 				return DraggableComponent;
-			break;
+			case 'animal':
+				return AnimalComponent;
+				break;
 			case 'movieclip':
 				return MovieClipComponent;
-			break;
+				break;
 			case 'wave':
 				return WaveComponent;
-			break;
+				break;
 			case 'button':
 				return ButtonComponent;
-			break;
+				break;
 			case 'planet':
 				return PlanetComponent;
-			break;
+				break;
 			case 'cactus':
 				return CactusComponent;
-			break;
+				break;
 			case 'eagle':
 				return EagleComponent;
-			break;
+				break;
 			case 'fish':
 				return FishComponent;
 			default:
 				return AbstractComponent;
 		}
-		
+
 	}
 }
 

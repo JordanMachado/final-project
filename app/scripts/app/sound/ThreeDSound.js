@@ -17,7 +17,7 @@ ThreeDSound.prototype.initialize = function(options) {
 	// this.sound.volume = 0;	
 
 
-	if (DEBUG) {
+	// if (DEBUG) {
 		this.container = new PIXI.Container();
 		this.visualisation = new PIXI.Graphics();
 		this.visualisation.lineStyle(0);
@@ -30,7 +30,7 @@ ThreeDSound.prototype.initialize = function(options) {
 
 		this.container.addChild(this.visualisation);
 		// console.log(this.container.width,this.container.height)
-	}
+	// }
 
 }
 

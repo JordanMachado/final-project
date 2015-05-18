@@ -21,7 +21,7 @@ var TweenMax = require('gsap');
 
                     var media = {
                      m4v: media_path+".mp4",
-                     webm: media_path+".webm"
+                     webmv: media_path+".webm"
                     };
 
                     this.jplayer = this.$video_div.jPlayer.bind(this.$video_div);
@@ -39,7 +39,7 @@ var TweenMax = require('gsap');
                          ended: _videoEnd.bind(this),
                          solution: 'html',
                          muted:true,
-                         supplied: 'm4v, webm',
+                         supplied: 'webmv',
                          errorAlerts: false,
                          playbackRate:5,
                          warningAlerts: false

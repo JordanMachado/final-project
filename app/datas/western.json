@@ -46,7 +46,8 @@
 			"numberOfFrame":24,
 			"animationSpeed":0.5,
 			"autoplay":true,
-			"loop":true
+			"loop":true,
+			"interactive":false
 		}
 
 	},
@@ -57,11 +58,12 @@
 			"y": 1400,
 			"texturePath":"images/western/skull/",
 			"textureName":"skull_",
-			"numberOfFrame":10,
+			"numberOfFrame":9,
 			"animationSpeed":0.5,
 			"autoplay":true,
 			"loop":false,
-			"interactive":true
+			"interactive":true,
+			"reverse":true
 		}
 
 	},
@@ -84,14 +86,15 @@
 		"type": "movieclip",
 		"config": {
 			"x": 2100,
-			"y": 1400,
+			"y": 1800,
 			"texturePath":"images/western/fire-fish/",
 			"textureName":"fire-fish_",
 			"numberOfFrame":38,
 			"animationSpeed":0.5,
 			"autoplay":false,
 			"loop":false,
-			"interactive":true
+			"interactive":true,
+			"reverse":true
 		}
 
 	},
@@ -103,11 +106,27 @@
 		}
 
 	},
+	{
+		"type": "animal",
+		"config": {
+			"x":900,
+			"y":1800,
+			"spineData":"buffalo"
+		}
+	},
+	{
+		"type": "animal",
+		"config": {
+			"x":500,
+			"y":500,
+			"spineData":"horse"
+		}
+	}
 
 	],
 	"sounds": [{
-		"x": 2600,
-		"y": 2600,
+		"x": 3150,
+		"y": 1100,
 		"radius": 500,
 		"url": "mysong.mp3"
 	}]

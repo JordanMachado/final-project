@@ -21,6 +21,14 @@
 			"path":"images/western/eagle/eagle.json"
 		},
 		{
+			"name":"buffalo",
+			"path":"images/western/buffalo/buffalo.json"
+		},
+		{
+			"name":"horse",
+			"path":"images/western/horse/horse.json"
+		},
+		{
 			"name":"fishGreen",
 			"path":"images/western/fish-green/fish-green.json"
 		},

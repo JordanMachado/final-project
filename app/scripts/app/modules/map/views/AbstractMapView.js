@@ -8,9 +8,7 @@ var spine = require('pixi-spine');
 var ComponentFactory = require('ComponentFactory');
 var ThreeDSound = require('ThreeDSound');
 var Resources = require('Resources');
-
-
-
+var MathFX = require('MathFX');
 
 
 var AbstractMapView = Marionette.ItemView.extend({
@@ -24,14 +22,14 @@ var AbstractMapView = Marionette.ItemView.extend({
 
 		this.animation = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
 		this.initializePIXI();
-		
+
 
 	},
 	onRender: function() {},
 	onShow: function() {
 		this.$el.append(this.renderer.view);
 		this.animate();
-		
+
 
 	},
 	// initialize the pixi scene
@@ -76,31 +74,30 @@ var AbstractMapView = Marionette.ItemView.extend({
 			y: this.container.height - window.innerHeight
 		}
 
-		
-		this.createSounds();
 
+		this.createSounds();
 
 	},
 	createComponents: function() {
 
 
 		var components = this.model.get('components');
-		for(var i =0,ln = components.length;i<ln;i++) {
-			
+		for (var i = 0, ln = components.length; i < ln; i++) {
+
 			var ComponentClass = ComponentFactory.build(components[i]);
 			var component = new ComponentClass(components[i].config);
 			component.addToContainer(this.container);
 			this.components.push(component);
 		}
-		
+
 
 
 	},
-	createSounds:function() {
+	createSounds: function() {
 		console.log('createSounds')
 		var sounds = this.model.get('sounds');
 
-		for(var i =0,ln = sounds.length;i<ln;i++) {
+		for (var i = 0, ln = sounds.length; i < ln; i++) {
 			var sound = new ThreeDSound(sounds[i])
 			sound.addToContainer(this.container);
 			this.sounds.push(sound)
@@ -120,28 +117,89 @@ var AbstractMapView = Marionette.ItemView.extend({
 		//same value e.data.originalEvent && e.Data.getLocalPosition
 		// console.log(e.data.originalEvent.touches[0].clientX,e.data.originalEvent.touches[0].clientY)
 		// console.log(e.data.getLocalPosition(this.parent))
+
 		if (!DEBUG) {
+			if (!this.dragging) {
+				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
+				if (objectInformation.dragging == true) {
+					this.initialPosition = e.data.getLocalPosition(this, objectInformation.positionCenter);
+					this.dragging = true;
 
+				}
 
-			// create test if object and if is object store the center of the triangle of the touches to set the initialposition
-			if (e.data.originalEvent.touches.length == 3)
-				this.dragging = true;
-			else
-				this.dragging = false;
+			}
+
 		} else {
 			this.dragging = true;
+			this.initialPosition = e.data.getLocalPosition(this);
 		}
 
-		this.initialPosition = e.data.getLocalPosition(this);
+
+	},
+	objectDetection: function(touches) {
+
+		var dragging = false;
+		var positionCenter = {};
+
+		// set matchs to 0 for all touchs
+		for (var i = 0, ln = touches.length; i < ln; i++) {
+			touches[i].matchs = 0;
+			for (var j = 0, ln = touches.length; j < ln; j++) {
+				// compute all dist between touchs
+				if (touches[i] !== touches[j]) {
+					var coord1 = {
+						x: touches[i].clientX,
+						y: touches[i].clientY
+					};
+					var coord2 = {
+						x: touches[j].clientX,
+						y: touches[j].clientY
+					};
+					var dist = MathFX.distance(coord1, coord2);
+
+					// dist match with pattern of the object
+					if (dist > 60 && dist < 80) {
+						touches[i].matchs = touches[i].matchs + 1;
+					}
+				}
+			}
+		}
+
+		var objectTouches = [];
+		// add all touchs of the object in objectTouches
+		for (var i = 0, ln = touches.length; i < ln; i++) {
+			if (touches[i].matchs == 2)
+				objectTouches.push(touches[i]);
+		}
+
+		// set drag to true if detect pattern
+		if (objectTouches.length == 3) {
+			dragging = true;
+			positionCenter.x = (objectTouches[0].clientX + objectTouches[1].clientX + objectTouches[2].clientX) / 3;
+			positionCenter.y = (objectTouches[0].clientY + objectTouches[1].clientY + objectTouches[2].clientY) / 3;
+
+		} else {
+			dragging = false;
+		}
+
+		return {
+			dragging: dragging,
+			positionCenter: positionCenter
+		}
+
 	},
 	onDragMoveContainer: function(e) {
 
 		if (this.container.dragging) {
 
-			// set localPositionToStage the center of the triangle of the touches 
-			var localPositionToStage = e.data.getLocalPosition(this.container.parent);
+			if (!DEBUG) {
+				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
+				var localPositionToStage = objectInformation.positionCenter;
+			} else {
+				var localPositionToStage = e.data.getLocalPosition(this.container.parent);
+			}
 
-			for(var i =0,ln = this.sounds.length;i<ln;i++) {
+			for (var i = 0, ln = this.sounds.length; i < ln; i++) {
 				this.sounds[i].checkPosition()
 			}
 
@@ -149,7 +207,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 					x: localPositionToStage.x - this.container.initialPosition.x,
 					y: localPositionToStage.y - this.container.initialPosition.y
 				}
-			// if the new position is in the bounding box define by the difference of the size window/container
+				// if the new position is in the bounding box define by the difference of the size window/container
 			if (newPosition.x < 0 && newPosition.x > -this.container.spacing.x) {
 				this.container.position.x = newPosition.x;
 			}
@@ -161,13 +219,15 @@ var AbstractMapView = Marionette.ItemView.extend({
 	},
 	onDragEndContainer: function(e) {
 		if (!DEBUG) {
-			if (e.data.originalEvent.touches.length != 3)
+			var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
+			if (objectInformation.dragging == false) {
 				this.dragging = false;
+				this.initialPosition = null;
+			}
 		} else {
 			this.dragging = false;
 		}
 
-		this.initialPosition = null;
 	}
 
 });
