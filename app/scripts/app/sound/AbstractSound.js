@@ -12,16 +12,17 @@ function AbstractSound(options) {
 }
 
 AbstractSound.prototype.initialize = function(options) {
-	console.log('initialize sound');
 	this.isPlaying = false;
-	this.sound = new Audio('sounds/test.mp3');
+	this.sound = new Audio(options.url);
 	this.sound.addEventListener('ended', this.onEnded.bind(this));
-	window.sound = this.sound;
+	this.sound.loop = options.loop;
+	if(options.volume)
+		this.sound.volume = options.volume;
+	if(options.maxVolume)
+		this.sound.volume = options.maxVolume;
+	this.sound.volume = 0;
 	// sound.play();
 }
-
-//just for test
-AbstractSound.prototype.addToContainer = function(container) {}
 
 AbstractSound.prototype.play = function() {
 	console.log('play sound');
@@ -45,6 +46,7 @@ AbstractSound.prototype.stop = function() {
 
 AbstractSound.prototype.onEnded = function() {
 	console.log('ended')
+	this.isPlaying = false;
 }
 
 

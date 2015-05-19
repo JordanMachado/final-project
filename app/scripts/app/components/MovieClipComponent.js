@@ -41,7 +41,7 @@ MovieClipComponent.prototype.initialize = function(options) {
 
 	if (this.reverse) {
 		this.texturesCounterClockWise = [];
-		for (var i =  this.numberOfFrame, ln = this.numberOfFrame-1; i > 0; i--) {
+		for (var i = this.numberOfFrame, ln = this.numberOfFrame - 1; i > 0; i--) {
 			var texture = new PIXI.Texture.fromFrame(this.texturePath + this.textureName + i + '.png')
 			this.texturesCounterClockWise.push(texture);
 		}
@@ -77,6 +77,10 @@ MovieClipComponent.prototype.initialize = function(options) {
 	this.graphic
 		.on('mousedown', this.animate.bind(this))
 		.on('touchstart', this.animate.bind(this))
+
+	this.soundArgs = options.sound;
+	if (this.soundArgs)
+		AbstractComponent.prototype.createSound.call(this);
 };
 
 
@@ -88,6 +92,13 @@ MovieClipComponent.prototype.addToContainer = function(container) {
 }
 
 MovieClipComponent.prototype.animate = function() {
+
+	if(this.sound) {
+		if(!this.sound.isPlaying)
+		this.sound.play();
+	}
+
+
 	if (this.reverse) {
 		if (this.clockWise) {
 			this.graphicReverse.alpha = 0;
@@ -107,9 +118,6 @@ MovieClipComponent.prototype.animate = function() {
 
 };
 
-MovieClipComponent.prototype.reverse = function() {
 
-
-};
 
 module.exports = MovieClipComponent;

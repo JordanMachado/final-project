@@ -8,7 +8,13 @@ var animationNames = [
 	"jump-01",
 	"jump-02"
 ];
-var animationFish = []
+var animationFish = [
+	Resources.datas.fishBlue.spineData,
+	Resources.datas.fishGreen.spineData,
+	Resources.datas.fishPink.spineData
+
+
+];
 
 function FishComponent(options) {
 	AbstractComponent.call(this, options);
@@ -74,10 +80,9 @@ FishComponent.prototype.initialize = function(options) {
 
 
 FishComponent.prototype.createFish = function(e) {
-	console.log('createFish')
 	var containerAnim = new PIXI.Container();
 	var fish = new PIXI.Container();
-	var fishAnimation = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
+	var fishAnimation = new PIXI.spine.Spine(animationFish[Math.floor(Math.random() * animationFish.length)]);
 	fish.addChild(fishAnimation)
 
 	fishAnimation.state.setAnimationByName(1, animationNames[Math.floor(Math.random() * animationNames.length)], false);
@@ -88,15 +93,14 @@ FishComponent.prototype.createFish = function(e) {
 	mask.drawRect(-fish.width, -170, fish.width * 4, 170);
 
 	containerAnim.addChild(mask);
-	containerAnim.addChild(fish)
+	containerAnim.addChild(fish);
 	containerAnim.mask = mask;
 
 	containerAnim.position.x = e.data.getLocalPosition(this.mapContainer).x;
 	containerAnim.position.y = e.data.getLocalPosition(this.mapContainer).y;
 
-var random = Math.random() * (0.9 - 0.6) + 0.6;
+	var random = Math.random() * (0.9 - 0.6) + 0.6;
 	if (Math.random() > 0.5) {
-
 		containerAnim.scale.x = -random;
 		containerAnim.scale.y = random;
 	} else {
@@ -106,9 +110,14 @@ var random = Math.random() * (0.9 - 0.6) + 0.6;
 	this.mapContainer.addChild(containerAnim);
 
 	this.fishs.push(containerAnim);
+
+	// todo find bug for updateTransform when more than 1 fish
 	for (var i = 0; i < this.fishs.length; i++) {
-		this.fishs[i].children[1].children[0].state.onComplete = function() {
-			this.mapContainer.removeChild(this.fishs[i]);
+		var state = this.fishs[i].children[1].children[0].state;
+		state.onComplete = function() {
+			this.mapContainer.removeChild(this.fishs[0]);
+			console.log(this.mapContainer.children.length);
+			this.fishs.shift();
 		}.bind(this)
 	}
 

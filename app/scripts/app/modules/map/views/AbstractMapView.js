@@ -7,8 +7,10 @@ var PIXI = require('pixi.js');
 var spine = require('pixi-spine');
 var ComponentFactory = require('ComponentFactory');
 var ThreeDSound = require('ThreeDSound');
+var Sound = require('Sound');
 var Resources = require('Resources');
 var MathFX = require('MathFX');
+var TweenMax = require('gsap');
 
 
 var AbstractMapView = Marionette.ItemView.extend({
@@ -35,7 +37,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	// initialize the pixi scene
 	initializePIXI: function() {
 		this.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
-		console.log(this.renderer.type == PIXI.WEBGL_RENDERER)
+		// console.log(this.renderer.type == PIXI.WEBGL_RENDERER)
 		var type = (this.renderer instanceof PIXI.WebGLRenderer) ? 'webgl render' : 'canvas render'
 		console.log(type);
 		this.stage = new PIXI.Container();
@@ -74,8 +76,10 @@ var AbstractMapView = Marionette.ItemView.extend({
 			y: this.container.height - window.innerHeight
 		}
 
-
 		this.createSounds();
+		this.createComponents();
+		this.createExtras();
+		
 
 	},
 	createComponents: function() {
@@ -101,14 +105,26 @@ var AbstractMapView = Marionette.ItemView.extend({
 			var sound = new ThreeDSound(sounds[i])
 			sound.addToContainer(this.container);
 			this.sounds.push(sound)
-			console.log(sound)
 		}
+		var backgroundSoundArgs = this.model.get('backgroundSound');
+		this.backgroundSound = new Sound(backgroundSoundArgs);
+		this.backgroundSound.play();
 
-		this.createComponents();
 	},
-	animate: function() {
+	createExtras: function() {
+		console.log('extras')
+		// var extras = this.model.get('extras');
+
+		// for (var i = 0, ln = extras.length; i < ln; i++) {
+		// 	var extras = new ThreeDSound(sounds[i])
+		// 	sound.addToContainer(this.container);
+		// 	this.extras.push(sound)
+		// }
+	},
+	animate: function(e) {
 		requestAnimationFrame(this.animate.bind(this));
 		this.renderer.render(this.stage);
+		
 	},
 	/*
 	 * Container events
@@ -189,7 +205,6 @@ var AbstractMapView = Marionette.ItemView.extend({
 
 	},
 	onDragMoveContainer: function(e) {
-
 		if (this.container.dragging) {
 
 			if (!DEBUG) {
@@ -228,6 +243,33 @@ var AbstractMapView = Marionette.ItemView.extend({
 			this.dragging = false;
 		}
 
+	},
+	updateLayersOrder: function() {
+		this.stage.children.sort(function(a, b) {
+			a.zIndex = a.zIndex || 0;
+			b.zIndex = b.zIndex || 0;
+			return b.zIndex - a.zIndex
+		});
+	},
+	setMapPosition: function(x, y) {
+		console.log('set map ')
+			// 1s -> 400px
+			// x -> 600px
+
+		var dist = MathFX.distance(this.container.position, {
+			x: x,
+			y: y
+		});
+		// 1s 500px
+		var time = dist / 500;
+
+
+
+		TweenLite.to(this.container.position, time, {
+			x: x,
+			y: y,
+			ease: Quad.easeOut
+		});
 	}
 
 });

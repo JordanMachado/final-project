@@ -13,6 +13,7 @@ var CactusComponent = require('./CactusComponent');
 var EagleComponent = require('./EagleComponent');
 var FishComponent = require('./FishComponent');
 var AnimalComponent = require('./AnimalComponent');
+var VultureComponent = require('./VultureComponent');
 
 //cockpit components
 var PlanetComponent = require('./PlanetComponent');
@@ -26,6 +27,9 @@ var ComponentFactory = {
 		switch (type) {
 			case 'rock':
 				return RockComponent;
+				break;
+			case 'vulture':
+				return VultureComponent;
 				break;
 			case 'draggable':
 				return DraggableComponent;

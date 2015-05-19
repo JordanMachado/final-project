@@ -12,7 +12,7 @@ function DraggableComponent(options) {
 }
 
 DraggableComponent.prototype.initialize = function(options) {
-	console.log('draggable')
+	// console.log('draggable')
 	this.texturePath = 'images/western/skull/skull_1.png';
 	AbstractComponent.prototype.initialize.call(this, options);
 
@@ -29,30 +29,37 @@ DraggableComponent.prototype.initialize = function(options) {
 }
 
 DraggableComponent.prototype.dragStart = function(e) {
-	this.data = e.data;
-	this.dragging = true;
-	this.initialPosition = e.data.getLocalPosition(this);
+	if (!this.data && !this.identifier) {
+		this.data = e.data;
+		this.identifier = e.data.identifier;
+		this.dragging = true;
+		this.initialPosition = this.data.getLocalPosition(this);
+	}
 };
 
 DraggableComponent.prototype.dragMove = function(e) {
-	
+
 	if (this.dragging) {
-		var localPositionToContainer = this.data.getLocalPosition(this.parent);
-
-		var newPosition = {
-			x: localPositionToContainer.x - this.initialPosition.x,
-			y: localPositionToContainer.y - this.initialPosition.y
+		if (e.data.identifier == this.identifier) {
+			var localPositionToContainer = this.data.getLocalPosition(this.parent);
+			var newPosition = {
+				x: localPositionToContainer.x - this.initialPosition.x,
+				y: localPositionToContainer.y - this.initialPosition.y
+			}
+			this.position.x = newPosition.x;
+			this.position.y = newPosition.y;
 		}
-		this.position.x = newPosition.x;
-		this.position.y = newPosition.y;
-		e.stopPropagation();
+		// e.stopPropagation();
 	}
-
 };
 
 DraggableComponent.prototype.dragEnd = function(e) {
-	this.dragging = false;
-	this.data = null;
+	if (e.data.identifier == this.identifier) {
+		this.dragging = false;
+		this.data = null;
+		this.identifier = null;
+	}
+	
 };
 
 

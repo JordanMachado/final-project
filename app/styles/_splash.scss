@@ -1,28 +1,14 @@
 .splash-view {
-	background-color:transparent;
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	text-align:center;
-	text-transform:uppercase;
-	background-color:#494aae;
 
 	.button {
 		position:absolute;
-		top:50%;
+		top:80%;
 		left: 50%;
 		transform: translate(-50%,-50%);
 		cursor:pointer;
 		border:2px solid black;
-		width:20%;
+		width:32%;
+		height:3%;
 		padding: 2%;
-	}
-	.credits {
-		position:absolute;
-		left:50%;
-		transform:translateX(-50%);
-		bottom:5%;
 	}
 }

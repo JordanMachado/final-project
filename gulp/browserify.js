@@ -20,6 +20,7 @@ gulp.task('browserify', function() {
 			"MathFX": "./app/scripts/app/utils/MathFX.js",
 			"ComponentFactory": "./app/scripts/app/components/ComponentFactory.js",
 			"ThreeDSound": "./app/scripts/app/sound/ThreeDSound.js",
+			"Sound": "./app/scripts/app/sound/AbstractSound.js",
 			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js"
 		},
 		verbose: false

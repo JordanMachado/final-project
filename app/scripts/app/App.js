@@ -56,7 +56,7 @@ var AppRouter = Backbone.Router.extend({
 App.router = new AppRouter();
 
 App.router.on('route:index', function() {
-	// App.SplashScreen.showSplashScreen();
+	App.SplashScreen.showSplashScreen();
 });
 
 App.router.on('route:intro', function() {

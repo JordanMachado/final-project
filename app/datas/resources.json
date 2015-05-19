@@ -13,6 +13,10 @@
 			"path":"images/western/cactus.png"
 		},
 		{
+			"name":"vulture",
+			"path":"images/western/vulture.png"
+		},
+		{
 			"name":"fishBlue",
 			"path":"images/western/fish-blue/fish-blue.json"
 		},

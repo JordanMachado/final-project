@@ -14,10 +14,9 @@ function ThreeDSound(options) {
 ThreeDSound.prototype.initialize = function(options) {
 	AbstractSound.prototype.initialize.call(this, options);
 	this.zoneRadius = options.radius;
-	// this.sound.volume = 0;	
+	this.sound.volume = 0;	
+	this.maxVolume = options.maxVolume;
 
-
-	// if (DEBUG) {
 		this.container = new PIXI.Container();
 		this.visualisation = new PIXI.Graphics();
 		this.visualisation.lineStyle(0);
@@ -29,15 +28,16 @@ ThreeDSound.prototype.initialize = function(options) {
 		this.visualisation.endFill();
 
 		this.container.addChild(this.visualisation);
+		this.container.alpha = 0;
 		// console.log(this.container.width,this.container.height)
-	// }
+
 
 }
 
 ThreeDSound.prototype.addToContainer = function(container) {
 	this.mapContainer = container;
 	if(DEBUG)
-		container.addChild(this.container);
+		this.mapContainer.addChild(this.container);
 }
 
 ThreeDSound.prototype.checkPosition = function() {
@@ -49,9 +49,10 @@ ThreeDSound.prototype.checkPosition = function() {
 
 	var dist = MathFX.distance(position,{x:window.innerWidth/2,y:window.innerHeight/2})
 	
-	if(dist<this.zoneRadius) {
-		this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
-	}
+	// if(dist<this.zoneRadius) {
+	// 	this.sound.volume = Math.min(this.maxVolume,Math.abs(dist/this.zoneRadius-1))
+	// 	// this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
+	// }
 	if(dist<this.zoneRadius && !this.isPlaying) {
 		this.play()
 	} else if(dist>this.zoneRadius && this.isPlaying) {
