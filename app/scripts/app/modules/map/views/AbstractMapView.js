@@ -56,6 +56,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 			.on('touchmove', this.onDragMoveContainer.bind(this));
 
 
+
 		this.stage.addChild(this.container);
 
 		this.createMap();
@@ -79,7 +80,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 		this.createSounds();
 		this.createComponents();
 		this.createExtras();
-		
+
 
 	},
 	createComponents: function() {
@@ -113,7 +114,11 @@ var AbstractMapView = Marionette.ItemView.extend({
 	},
 	createExtras: function() {
 		console.log('extras')
-		// var extras = this.model.get('extras');
+		this.compassObject = {
+			name:'compass',
+			touchList:[]
+		};
+			// var extras = this.model.get('extras');
 
 		// for (var i = 0, ln = extras.length; i < ln; i++) {
 		// 	var extras = new ThreeDSound(sounds[i])
@@ -124,32 +129,6 @@ var AbstractMapView = Marionette.ItemView.extend({
 	animate: function(e) {
 		requestAnimationFrame(this.animate.bind(this));
 		this.renderer.render(this.stage);
-		
-	},
-	/*
-	 * Container events
-	 */
-	onDragStartContainer: function(e) {
-		//same value e.data.originalEvent && e.Data.getLocalPosition
-		// console.log(e.data.originalEvent.touches[0].clientX,e.data.originalEvent.touches[0].clientY)
-		// console.log(e.data.getLocalPosition(this.parent))
-
-		if (!DEBUG) {
-			if (!this.dragging) {
-				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
-				if (objectInformation.dragging == true) {
-					this.initialPosition = e.data.getLocalPosition(this, objectInformation.positionCenter);
-					this.dragging = true;
-
-				}
-
-			}
-
-		} else {
-			this.dragging = true;
-			this.initialPosition = e.data.getLocalPosition(this);
-		}
-
 
 	},
 	objectDetection: function(touches) {
@@ -204,6 +183,31 @@ var AbstractMapView = Marionette.ItemView.extend({
 		}
 
 	},
+	/*
+	 * Container events
+	 */
+	onDragStartContainer: function(e) {
+		// console.log(e)
+		// console.log('drag start container')
+		if (!DEBUG) {
+			if (!this.dragging) {
+				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
+				if (objectInformation.dragging == true) {
+					this.initialPosition = e.data.getLocalPosition(this, objectInformation.positionCenter);
+					this.dragging = true;
+
+				}
+
+			}
+
+		} else {
+			this.dragging = true;
+			this.data = e.data
+			this.initialPosition = this.data.getLocalPosition(this);
+		}
+
+
+	},
 	onDragMoveContainer: function(e) {
 		if (this.container.dragging) {
 
@@ -211,7 +215,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
 				var localPositionToStage = objectInformation.positionCenter;
 			} else {
-				var localPositionToStage = e.data.getLocalPosition(this.container.parent);
+				var localPositionToStage = this.container.data.getLocalPosition(this.container.parent);
 			}
 
 			for (var i = 0, ln = this.sounds.length; i < ln; i++) {
@@ -219,16 +223,27 @@ var AbstractMapView = Marionette.ItemView.extend({
 			}
 
 			var newPosition = {
-					x: localPositionToStage.x - this.container.initialPosition.x,
-					y: localPositionToStage.y - this.container.initialPosition.y
-				}
-				// if the new position is in the bounding box define by the difference of the size window/container
+				x: localPositionToStage.x - this.container.initialPosition.x,
+				y: localPositionToStage.y - this.container.initialPosition.y
+			}
+			TweenLite.killTweensOf(this.container.position);
+			// if the new position is in the bounding box define by the difference of the size window/container
 			if (newPosition.x < 0 && newPosition.x > -this.container.spacing.x) {
-				this.container.position.x = newPosition.x;
+				// this.container.position.x = newPosition.x;
+
+				TweenLite.to(this.container.position, 0.2, {
+					x: newPosition.x
+				})
 			}
 			if (newPosition.y < 0 && newPosition.y > -this.container.spacing.y) {
-				this.container.position.y = newPosition.y;
+				// this.container.position.y = newPosition.y;
+				// TweenLite.killTweensOf(this.container.position);
+				TweenLite.to(this.container.position, 0.2, {
+					y: newPosition.y
+				})
 			}
+
+
 
 		}
 	},
@@ -241,6 +256,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 			}
 		} else {
 			this.dragging = false;
+			this.data = null;
 		}
 
 	},

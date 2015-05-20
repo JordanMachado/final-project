@@ -14,7 +14,7 @@ var main = {
 	},
 	onReady:function() {
 		Resources.load(function(){
-			console.log(Resources)
+			// console.log(Resources)
 			App.start({container:'#App'})
 		});
 

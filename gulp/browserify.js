@@ -21,7 +21,9 @@ gulp.task('browserify', function() {
 			"ComponentFactory": "./app/scripts/app/components/ComponentFactory.js",
 			"ThreeDSound": "./app/scripts/app/sound/ThreeDSound.js",
 			"Sound": "./app/scripts/app/sound/AbstractSound.js",
-			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js"
+			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js",
+			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js",
+			"TransparencyHitArea":"./app/scripts/libs/PIXI.TransparencyHitArea.js",
 		},
 		verbose: false
 	}

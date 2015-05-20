@@ -28,7 +28,7 @@ ThreeDSound.prototype.initialize = function(options) {
 		this.visualisation.endFill();
 
 		this.container.addChild(this.visualisation);
-		this.container.alpha = 0;
+		// this.container.alpha = 0;
 		// console.log(this.container.width,this.container.height)
 
 

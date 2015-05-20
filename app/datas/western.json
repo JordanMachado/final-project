@@ -7,6 +7,69 @@
 				"y": 1990
 			}
 		}, {
+			"type": "rock",
+			"config": {
+				"x": 355,
+				"y": 945,
+				"texturePath": "images/western/rocks/pierre-01.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 2388,
+				"y": 760,
+				"texturePath": "images/western/rocks/pierre-02.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 2369,
+				"y": 1027,
+				"texturePath": "images/western/rocks/pierre-03.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 2720,
+				"y": 1020,
+				"texturePath": "images/western/rocks/pierre-04.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 2745,
+				"y": 1240,
+				"texturePath": "images/western/rocks/pierre-05.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 2610,
+				"y": 3210,
+				"texturePath": "images/western/rocks/pierre-06.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 3880,
+				"y": 1315,
+				"texturePath": "images/western/rocks/pierre-08.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 3570,
+				"y": 645,
+				"texturePath": "images/western/rocks/pierre-09.png"
+			}
+		}, {
+			"type": "rock",
+			"config": {
+				"x": 3160,
+				"y": 600,
+				"texturePath": "images/western/rocks/pierre-10.png"
+			}
+		}, {
 			"type": "cactus",
 			"config": {
 				"x": 3537,
@@ -99,8 +162,8 @@
 				"interactive": true,
 				"reverse": true,
 				"sound": {
-					"url":"sounds/western/son-skull.mp3",
-					"volume":0.1
+					"url": "sounds/western/son-skull.mp3",
+					"volume": 0.1
 				}
 			}
 
@@ -132,19 +195,58 @@
 				"interactive": true,
 				"reverse": true,
 				"sound": {
-					"url":"sounds/western/son-fire-fish.mp3",
-					"volume":0.1
+					"url": "sounds/western/son-fire-fish.mp3",
+					"volume": 0.1
 				}
 			}
 
 		}, {
-			"type": "draggable",
+			"type": "simple",
 			"config": {
-				"x": 300,
-				"y": 2300
+				"x": 1920,
+				"y": 1023,
+				"texturePath": "images/western/totem.png"
 			}
+		},
 
+		{
+			"type": "simple",
+			"config": {
+				"x": 1688,
+				"y": 840,
+				"texturePath": "images/western/tipi-03.png"
+			}
+		},
+
+		{
+			"type": "simple",
+			"config": {
+				"x": 1498,
+				"y": 672,
+				"texturePath": "images/western/tipi-02.png",
+				"interactive": true
+			}
 		}, {
+			"type": "simple",
+			"config": {
+				"x": 1237,
+				"y": 882,
+				"texturePath": "images/western/tipi-01.png"
+			}
+		}, {
+			"type": "simple",
+			"config": {
+				"x": 460,
+				"y": 1540,
+				"texturePath": "images/western/barque.png"
+			}
+		},
+
+		
+
+
+
+		{
 			"type": "animal",
 			"config": {
 				"x": 877,
@@ -188,7 +290,7 @@
 				"y": 3105,
 				"spineData": "horse"
 			}
-		}
+		},
 
 	],
 	"sounds": [{
@@ -196,28 +298,27 @@
 			"y": 1400,
 			"radius": 800,
 			"url": "sounds/western/son-cascade.mp3",
-			"maxVolume":1
+			"maxVolume": 1
 		}, {
 			"x": 2220,
 			"y": 1500,
 			"radius": 300,
 			"url": "sounds/western/son-fire.mp3",
 			"loop": true,
-			"maxVolume":0.01
-		},
-		 {
+			"maxVolume": 0.01
+		}, {
 			"x": 20,
 			"y": 3500,
 			"radius": 2000,
 			"url": "sounds/western/son-waves.mp3",
 			"loop": true,
-			"maxVolume":1
+			"maxVolume": 1
 		}
 
 	],
-	"backgroundSound":{
+	"backgroundSound": {
 		"url": "sounds/western/son-background.mp3",
-		"loop":true,
-		"maxVolume":1
+		"loop": true,
+		"maxVolume": 1
 	}
 }

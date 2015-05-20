@@ -18,7 +18,7 @@ var Map = App.module('Map', function(Map, App) {
 		mapView = new WesternMapView({
 			model: new Backbone.Model(datas)
 		});
-		App.mapRegion.show(mapView);
+		App.experienceRegion.show(mapView);
 	});
 });
 

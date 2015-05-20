@@ -9,6 +9,70 @@
 			"path":"images/western/rock.png"
 		},
 		{
+			"name":"rock1",
+			"path":"images/western/rocks/pierre-01.png"
+		},
+		{
+			"name":"rock2",
+			"path":"images/western/rocks/pierre-02.png"
+		},
+		{
+			"name":"rock3",
+			"path":"images/western/rocks/pierre-03.png"
+		},
+		{
+			"name":"rock4",
+			"path":"images/western/rocks/pierre-04.png"
+		},
+		{
+			"name":"rock5",
+			"path":"images/western/rocks/pierre-05.png"
+		},
+		{
+			"name":"rock6",
+			"path":"images/western/rocks/pierre-06.png"
+		},
+		{
+			"name":"rock7",
+			"path":"images/western/rocks/pierre-07.png"
+		},
+		{
+			"name":"rock8",
+			"path":"images/western/rocks/pierre-08.png"
+		},
+		{
+			"name":"rock9",
+			"path":"images/western/rocks/pierre-09.png"
+		},
+		{
+			"name":"rock10",
+			"path":"images/western/rocks/pierre-10.png"
+		},
+		{
+			"name":"roulotte",
+			"path":"images/western/roulotte.png"
+		},
+		{
+			"name":"tipi-01",
+			"path":"images/western/tipi-01.png"
+		},
+		{
+			"name":"tipi-02",
+			"path":"images/western/tipi-02.png"
+		},
+		{
+			"name":"tipi-03",
+			"path":"images/western/tipi-03.png"
+		},
+		{
+			"name":"totem",
+			"path":"images/western/totem.png"
+		},
+		{
+			"name":"barque",
+			"path":"images/western/barque.png"
+		},
+		{
 			"name":"cactus",
 			"path":"images/western/cactus.png"
 		},

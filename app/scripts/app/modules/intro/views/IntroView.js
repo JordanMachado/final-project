@@ -16,12 +16,13 @@ var IntroView = Marionette.ItemView.extend({
 		this.videoTutorial = new VideoContainer();
 		this.videoTutorial.setVideo('videos/tuto', 1080, 1920);
 		this.videoTutorial.once('end', this.onVideoTutorialEnded.bind(this));
+		this.listenToOnce(App,'app:introStarted',this.lauchVideo);
 
-		this.videoIntro = new VideoContainer();
-		this.videoIntro.setVideo('videos/intro', 1080, 1920);
-		this.videoIntro.once('end', this.onVideoIntroEnded.bind(this));
+		// this.videoIntro = new VideoContainer();
+		// this.videoIntro.setVideo('videos/intro', 1080, 1920);
+		// this.videoIntro.once('end', this.onVideoIntroEnded.bind(this));
 
-		this.videoIntro.hide();
+		// this.videoIntro.hide();
 
 
 	},
@@ -35,9 +36,13 @@ var IntroView = Marionette.ItemView.extend({
 	onRender: function() {
 		console.log('show')
 		this.ui.videoWrapper.append(this.videoTutorial.el);
+		// this.videoTutorial.play();
+
+
+	},
+	lauchVideo:function() {
 		this.videoTutorial.play();
-
-
+		console.log('start video intro')
 	},
 	onVideoTutorialEnded: function() {
 		console.log('video intro ended')
@@ -48,8 +53,8 @@ var IntroView = Marionette.ItemView.extend({
 	},
 	onClickConnexion: function() {
 		console.log('click connexion');
-		this.videoIntro.show();
-		this.videoIntro.play();
+		// this.videoIntro.show();
+		// this.videoIntro.play();
 
 	},
 	onVideoIntroEnded: function() {

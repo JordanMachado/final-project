@@ -5,6 +5,7 @@ var AbstractComponent = require('./AbstractComponent');
 var MovieClipComponent = require('./MovieClipComponent');
 var ButtonComponent = require('./ButtonComponent');
 var DraggableComponent = require('./DraggableComponent');
+var SimpleComponent = require('./SimpleComponent');
 
 
 // wester component
@@ -56,8 +57,14 @@ var ComponentFactory = {
 				break;
 			case 'fish':
 				return FishComponent;
+			case 'fish':
+				return FishComponent;
+			case 'simple':
+				return	SimpleComponent; 
+				break;
 			default:
 				return AbstractComponent;
+				break;
 		}
 
 	}

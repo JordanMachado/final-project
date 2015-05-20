@@ -26,6 +26,8 @@ DraggableComponent.prototype.initialize = function(options) {
 		.on('mousemove', this.dragMove)
 		.on('touchmove', this.dragMove);
 
+		
+
 }
 
 DraggableComponent.prototype.dragStart = function(e) {

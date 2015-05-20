@@ -3,7 +3,7 @@ var App = require('App');
 /*
  * Module for managing SplashScreen
  */
-
+var TweenMax = require('gsap')
 var Backbone = require('backbone');
 
 var SplashScreen = App.module('SplashScreen', function(SplashScreen, App) {
@@ -28,8 +28,16 @@ var SplashScreen = App.module('SplashScreen', function(SplashScreen, App) {
 	};
 	SplashScreen.hideSplashScreen = function() {
 
+		// if (!this.isShown) return;
+		// App.splashRegion.$el.hide();
+		// this.isShown = false;
+	};
+	SplashScreen.fadeOutSplashScreen = function() {
+
 		if (!this.isShown) return;
-		App.splashRegion.$el.hide();
+		TweenLite.to(App.splashRegion.$el,.5,{
+			autoAlpha:0
+		});
 		this.isShown = false;
 	};
 

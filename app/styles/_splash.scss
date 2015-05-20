@@ -1,5 +1,9 @@
 .splash-view {
-
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
 	.button {
 		position:absolute;
 		top:80%;
@@ -10,5 +14,13 @@
 		width:32%;
 		height:3%;
 		padding: 2%;
+	}
+	video {
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:1080px;
+		height:1920px;
+		background-color:black;
 	}
 }

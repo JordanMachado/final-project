@@ -15,7 +15,23 @@ var Intro = App.module('Intro', function(Intro, App) {
 		console.log('Intro module start');
 		IntroView = new IntroView();
 		App.introRegion.show(IntroView);
+		this.isShown = true;
+		this.hideIntro();
 	});
+
+	Intro.showIntro = function() {
+		if (this.isShown) return;
+		App.introRegion.$el.show();
+		this.isShown = true;
+
+
+	};
+	Intro.hideIntro = function() {
+
+		if (!this.isShown) return;
+		App.introRegion.$el.hide();
+		this.isShown = false;
+	};
 });
 
 module.exports = Intro;
