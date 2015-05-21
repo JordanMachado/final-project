@@ -25,9 +25,13 @@ $size : 30px;
 }
 
 .cockpit-view {
-	
 	img {
 		position:absolute;
 		z-index: -1;
 	}
+}
+
+#experience {
+	position:absolute;
+	z-index:10;
 }

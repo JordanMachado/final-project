@@ -22,7 +22,7 @@ gulp.task('browserify', function() {
 			"ThreeDSound": "./app/scripts/app/sound/ThreeDSound.js",
 			"Sound": "./app/scripts/app/sound/AbstractSound.js",
 			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js",
-			"VideoContainer":"./app/scripts/app/utils/VideoContainer.js",
+			"ImageContainer":"./app/scripts/app/utils/ImageContainer.js",
 			"TransparencyHitArea":"./app/scripts/libs/PIXI.TransparencyHitArea.js",
 		},
 		verbose: false

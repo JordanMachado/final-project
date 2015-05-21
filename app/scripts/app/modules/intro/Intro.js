@@ -13,7 +13,20 @@ var Intro = App.module('Intro', function(Intro, App) {
 
 	Intro.on('start', function() {
 		console.log('Intro module start');
-		IntroView = new IntroView();
+		var collection = new Backbone.Collection([{
+			username: "Paul",
+			active:false
+		},{
+			username: "Théo",
+			active:false
+		},
+		{
+			username: "Marine",
+			active:false
+		}])
+		IntroView = new IntroView({
+			collection: collection
+		});
 		App.introRegion.show(IntroView);
 		this.isShown = true;
 		this.hideIntro();

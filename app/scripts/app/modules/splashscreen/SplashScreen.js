@@ -16,23 +16,23 @@ var SplashScreen = App.module('SplashScreen', function(SplashScreen, App) {
 		splashScreenView = new SplashScreenView();
 		App.splashRegion.show(splashScreenView);
 		this.isShown = true;
-		this.hideSplashScreen();
+		this.hide();
 
 	});
 
-	SplashScreen.showSplashScreen = function() {
+	SplashScreen.show = function() {
 		if (this.isShown) return;
 		App.splashRegion.$el.show();
 		this.isShown = true;
 
 	};
-	SplashScreen.hideSplashScreen = function() {
+	SplashScreen.hide= function() {
 
-		// if (!this.isShown) return;
-		// App.splashRegion.$el.hide();
-		// this.isShown = false;
+		if (!this.isShown) return;
+		App.splashRegion.$el.hide();
+		this.isShown = false;
 	};
-	SplashScreen.fadeOutSplashScreen = function() {
+	SplashScreen.fadeOut = function() {
 
 		if (!this.isShown) return;
 		TweenLite.to(App.splashRegion.$el,.5,{
@@ -40,6 +40,13 @@ var SplashScreen = App.module('SplashScreen', function(SplashScreen, App) {
 		});
 		this.isShown = false;
 	};
+	SplashScreen.reset = function() {
+		console.log('reset splashScreenView')
+		App.splashRegion.reset();
+	};
+
+
+	SplashScreen.listenTo(App,'app:startTutorial',SplashScreen.reset)
 
 });
 

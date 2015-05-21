@@ -6,7 +6,7 @@ var ComponentFactory = require('ComponentFactory');
 
 var CockPitView = Marionette.ItemView.extend({
 	className: 'cockpit-view',
-	template: _.template('<img src="images/cockpit/stars.png" alt="">'),
+	template: _.template(''),
 
 	initialize: function() {
 		this.components = [];
@@ -86,8 +86,8 @@ var CockPitView = Marionette.ItemView.extend({
 
 			var _tick = (this.planets[i].inverse) ? -this.tickPlanets : this.tickPlanets;
 
-			this.planets[i].graphic.position.x = this.planets[i].initialPosition.x + (Math.cos(_tick+ i) * 5);
-			this.planets[i].graphic.position.y = this.planets[i].initialPosition.y + (Math.sin(_tick + i) * 5);
+			this.planets[i].graphic.position.x = this.planets[i].initialPosition.x + x;
+			this.planets[i].graphic.position.y = this.planets[i].initialPosition.y + y;
 		}
 		requestAnimationFrame(this.animate.bind(this));
 		this.renderer.render(this.stage);

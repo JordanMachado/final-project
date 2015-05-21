@@ -29,7 +29,6 @@ var SplashScreenView = Marionette.ItemView.extend({
 	onClickButton:function() {
 		console.log('launch tutorial');
 		App.navigate('/intro',{trigger:true});
-		App.SplashScreen.hideSplashScreen();
 	},
 	onRender:function() {
 		this.ui.videoWrapper.append(this.videoSplash.el);

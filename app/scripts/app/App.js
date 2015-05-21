@@ -42,7 +42,7 @@ App.addInitializer(function(options) {
 	require('./modules/splashscreen/SplashScreen');
 	require('./modules/intro/Intro');
 	// require('./modules/cockpit/CockPit');
-	// require('./modules/map/Map');
+	require('./modules/map/Map');
 	
 
 });
@@ -59,22 +59,23 @@ var AppRouter = Backbone.Router.extend({
 App.router = new AppRouter();
 
 App.router.on('route:index', function() {
-	console.log('index')
+	// console.log('index')
 
-	App.SplashScreen.showSplashScreen();
+	App.SplashScreen.show();
 });
 
 App.router.on('route:intro', function() {
-	console.log('intro + tutorial')
-	App.SplashScreen.fadeOutSplashScreen();
+	// console.log('intro + tutorial')
+	App.SplashScreen.fadeOut();
 	App.Intro.showIntro();
-	App.trigger('app:introStarted')
+	App.trigger('app:startTutorial')
 
 
 });
 
 App.router.on('route:cockpit', function() {
-
+	if(DEBUG)
+		 App.CockPit.fadeIn()
 });
 
 App.router.on('route:map', function() {
