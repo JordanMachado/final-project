@@ -20,7 +20,7 @@ AbstractSound.prototype.initialize = function(options) {
 		this.sound.volume = options.volume;
 	if(options.maxVolume)
 		this.sound.volume = options.maxVolume;
-	this.sound.volume = 0;
+	// this.sound.volume = 0;
 	// sound.play();
 }
 

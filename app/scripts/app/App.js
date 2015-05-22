@@ -4,7 +4,7 @@ var Marionette = require('backbone.marionette');
 
 // //helper
 var helper = document.querySelector('.helper');
-// helper.style.display = 'none';
+helper.style.display = 'none';
 
 
 
@@ -21,7 +21,7 @@ var App = new Marionette.Application({
 
 App.addRegions({
 	splashRegion:'#splash',
-	introRegion:'#intro',
+	videoManagerRegion:'#intro',
 	experienceRegion:'#experience'
 });
 
@@ -39,8 +39,8 @@ App.on('start', function(options) {
 
 App.addInitializer(function(options) {
 	//call all modules
-	require('./modules/splashscreen/SplashScreen');
-	require('./modules/intro/Intro');
+	// require('./modules/splashscreen/SplashScreen');
+	// require('./modules/videoManager/VideoManager');
 	// require('./modules/cockpit/CockPit');
 	require('./modules/map/Map');
 	
@@ -67,7 +67,7 @@ App.router.on('route:index', function() {
 App.router.on('route:intro', function() {
 	// console.log('intro + tutorial')
 	App.SplashScreen.fadeOut();
-	App.Intro.showIntro();
+	App.VideoManager.showVideoManager();
 	App.trigger('app:startTutorial')
 
 

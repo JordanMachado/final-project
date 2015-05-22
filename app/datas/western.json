@@ -319,6 +319,6 @@
 	"backgroundSound": {
 		"url": "sounds/western/son-background.mp3",
 		"loop": true,
-		"maxVolume": 1
+		"maxVolume": 0.1
 	}
 }

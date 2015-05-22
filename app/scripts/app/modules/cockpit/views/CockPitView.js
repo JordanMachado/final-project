@@ -3,6 +3,7 @@ Backbone.$ = require('jquery');
 var _ = require('underscore');
 var Marionette = require('backbone.marionette');
 var ComponentFactory = require('ComponentFactory');
+var TweenMax = require('gsap');
 
 var CockPitView = Marionette.ItemView.extend({
 	className: 'cockpit-view',
@@ -18,6 +19,7 @@ var CockPitView = Marionette.ItemView.extend({
 	onShow: function() {
 		this.$el.append(this.renderer.view);
 		this.animate();
+		// this.renderer.render(this.stage);
 	},
 	initializePIXI: function() {
 		this.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {
@@ -28,6 +30,12 @@ var CockPitView = Marionette.ItemView.extend({
 		this.stage.addChild(this.container);
 
 		this.createStars();
+		this.createPlanets();
+		this.createCockpit();
+		this.createComponents();
+		// this.hideElementsSpace();
+		this.showElementsSpace();
+		this.isInSpace = false;
 	},
 	createStars: function() {
 		this.stars = [];
@@ -43,7 +51,6 @@ var CockPitView = Marionette.ItemView.extend({
 		}
 		this.tickStarts = 0;
 
-		this.createPlanets();
 	},
 	createPlanets: function() {
 		var planets = this.model.get('planets');
@@ -56,16 +63,17 @@ var CockPitView = Marionette.ItemView.extend({
 		}
 		this.planets[0].inverse = true;
 		this.tickPlanets = 0;
-		this.createCockpit();
+
 	},
 	createCockpit: function() {
 		var cockpit = new PIXI.Sprite.fromImage('images/cockpit/cockpit.png');
 		this.container.addChild(cockpit);
-		this.createComponents();
+
+	},
+	onSpace: function() {
+
 	},
 	createComponents: function() {
-		console.log('createComponents')
-
 		var components = this.model.get('components');
 		for (var i = 0, ln = components.length; i < ln; i++) {
 			var ComponentClass = ComponentFactory.build(components[i]);
@@ -75,6 +83,39 @@ var CockPitView = Marionette.ItemView.extend({
 		}
 	},
 	animate: function() {
+		if (this.isInSpace)
+			this.animateComponent();
+		requestAnimationFrame(this.animate.bind(this));
+		this.renderer.render(this.stage);
+	},
+	showElementsSpace: function() {
+		console.log('show showElementsSpace')
+		for (var i = 0, ln = this.stars.length; i < ln; i++) {
+			this.stars[i].visible = true; 
+			this.stars[i].alpha = 0; 
+			TweenLite.to(this.stars[i],5.5,{
+				alpha:1
+			});
+		}
+		for (var i = 0, ln = this.planets.length; i < ln; i++) {
+			this.planets[i].graphic.visible = true; 
+			this.planets[i].graphic.alpha = 0; 
+			TweenLite.to(this.planets[i].graphic,5.5,{
+				alpha:1
+			});
+		}
+	},
+	hideElementsSpace: function() {
+		console.log('hide')
+		for (var i = 0, ln = this.stars.length; i < ln; i++) {
+			this.stars[i].visible = false;
+		}
+		for (var i = 0, ln = this.planets.length; i < ln; i++) {
+			this.planets[i].graphic.visible = false;
+		}
+
+	},
+	animateComponent: function() {
 		this.tickStarts += 0.2;
 		this.tickPlanets += 0.02;
 		for (var i = 0, ln = this.stars.length; i < ln; i++) {
@@ -89,8 +130,6 @@ var CockPitView = Marionette.ItemView.extend({
 			this.planets[i].graphic.position.x = this.planets[i].initialPosition.x + x;
 			this.planets[i].graphic.position.y = this.planets[i].initialPosition.y + y;
 		}
-		requestAnimationFrame(this.animate.bind(this));
-		this.renderer.render(this.stage);
 	}
 })
 
