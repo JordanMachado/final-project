@@ -19,6 +19,10 @@ MovieClipComponent.prototype.initialize = function(options) {
 	this.reverse = options.reverse;
 	this.autoplay = options.autoplay;
 	this.interactive = options.interactive;
+	this.hasAnimateCallBack = options.hasAnimateCallBack;
+	this.callBackName = options.callBackName;
+	this.callBackWaitingEnd = options.callBackWaitingEnd;
+
 
 
 	this.texturesClockWise = [];
@@ -93,9 +97,9 @@ MovieClipComponent.prototype.addToContainer = function(container) {
 
 MovieClipComponent.prototype.animate = function() {
 
-	if(this.sound) {
-		if(!this.sound.isPlaying)
-		this.sound.play();
+	if (this.sound) {
+		if (!this.sound.isPlaying)
+			this.sound.play();
 	}
 
 
@@ -114,7 +118,19 @@ MovieClipComponent.prototype.animate = function() {
 
 	} else {
 		this.graphic.play();
+		if (this.animateCallBack && this.callBackWaitingEnd === true) {
+			this.graphic.onComplete = function() {
+				this.animateCallBack(this);
+
+			}.bind(this)
+		}
+		if (this.animateCallBack && this.callBackWaitingEnd === false) {
+			this.animateCallBack(this);
+		}
+
 	}
+
+
 
 };
 

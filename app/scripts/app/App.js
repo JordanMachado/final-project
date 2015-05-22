@@ -4,7 +4,7 @@ var Marionette = require('backbone.marionette');
 
 // //helper
 var helper = document.querySelector('.helper');
-helper.style.display = 'none';
+// helper.style.display = 'none';
 
 
 
@@ -39,10 +39,10 @@ App.on('start', function(options) {
 
 App.addInitializer(function(options) {
 	//call all modules
-	// require('./modules/splashscreen/SplashScreen');
-	// require('./modules/videoManager/VideoManager');
-	// require('./modules/cockpit/CockPit');
-	require('./modules/map/Map');
+	require('./modules/splashscreen/SplashScreen');
+	require('./modules/videoManager/VideoManager');
+	require('./modules/cockpit/CockPit');
+	// require('./modules/map/Map');
 	
 
 });

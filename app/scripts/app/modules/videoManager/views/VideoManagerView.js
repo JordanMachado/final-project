@@ -84,12 +84,17 @@ var VideoManagerView = Marionette.CompositeView.extend({
 				break;
 			case 1:
 				console.log('construction-fusee video')
-				this.videoContainer.setVideo('videos/cockpit', 1080, 1920)
+				this.videoContainer.setVideo('videos/cockpit', 1080, 1920);
 				break;
 			case 2:
 				console.log('cockpit in space video')
-				this.videoContainer.setVideo('videos/decollage', 1080, 1920)
+				this.videoContainer.setVideo('videos/decollage', 1080, 1920);
+				this.listenToOnce(App,'app:cockpitTakeOff',this.launchVideoTakeOff);
 				break;
+			case 3:
+				console.log('trigger ta race pd')
+				App.trigger('app:cockpitTakeOffFinished')
+			break;
 		}
 
 		this.imageContainer.show();
@@ -120,16 +125,27 @@ var VideoManagerView = Marionette.CompositeView.extend({
 	},
 	launchVideoTransitionCockpit: function() {
 		console.log('start video transitionCockpit');
-
+		this.ui.exerciceConstructionRocket.remove();
 		this.showVideoContainer();
-		this.imageContainer.flush();
 		App.navigate('experience/cockpit', {
 			trigger: false
-		})
+		});
 
 		_.delay(function() {
 			App.trigger('app:startCockpit')
 		}, 10000);
+
+		this.imageContainer.flush();
+		this.imageContainer.setImage('images/intro/cockpit.jpg', 1080, 1920);
+
+		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
+	},
+	launchVideoTakeOff:function() {
+		console.log('start video decollage');
+		this.showVideoContainer();
+		this.imageContainer.flush();
+		this.imageContainer.setImage('images/intro/stars.png', 1080, 1920);
+		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
 	},
 
 	/*
@@ -151,6 +167,7 @@ var VideoManagerView = Marionette.CompositeView.extend({
 	},
 	toogleInteractivity: function() {
 		this.interactive = !this.interactive;
+		console.log('toogleInteractivity'+this.interactive,this.step)
 		if (this.children)
 			this.children.call("toogleInteractivity");
 	}

@@ -22,8 +22,10 @@ function AbstractComponent(options) {
 AbstractComponent.prototype.initialize = function(options) {
 
 	var texture = PIXI.Texture.fromImage(this.texturePath);
-
 	this.soundArgs = options.sound;
+	this.hasAnimateCallBack = options.hasAnimateCallBack;
+	this.callBackName = options.callBackName;
+	this.callBackWaitingEnd = options.callBackWaitingEnd;
 
 	this.graphic = new PIXI.Sprite(texture);
 	this.graphic.position.x = options.x;
@@ -46,13 +48,17 @@ AbstractComponent.prototype.addToContainer = function(container) {
 	this.mapContainer.addChild(this.graphic)
 }
 
+AbstractComponent.prototype.setAnimateCallBack = function(cb) {
+	this.animateCallBack = cb;
+
+}
+
 AbstractComponent.prototype.createSound = function() {
 	console.log('createSound');
 	this.sound = new Sound(this.soundArgs);
 };
 
 AbstractComponent.prototype.animate = function() {
-
 	if (this.sound) {
 		if (!this.sound.isPlaying)
 			this.sound.play();
@@ -67,8 +73,17 @@ AbstractComponent.prototype.animate = function() {
 	tl.to(this.graphic.scale, 0.4, {
 		x: 1,
 		y: 1,
-		ease: Elastic.easeOut.config(1, 0.3)
+		ease: Elastic.easeOut.config(1, 0.3),
+		onComplete: function() {
+			if (this.animateCallBack && this.callBackWaitingEnd === true) {
+				this.animateCallBack(this);
+			}
+		}.bind(this)
 	}, '-=0.2');
+
+	if (this.animateCallBack && this.callBackWaitingEnd === false) {
+		this.animateCallBack(this);
+	}
 }
 
 module.exports = AbstractComponent;

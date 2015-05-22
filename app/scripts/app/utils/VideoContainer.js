@@ -36,7 +36,7 @@ module.exports = Backbone.View.extend(new function() {
             }.bind(this),
             ended: _videoEnd.bind(this),
             solution: 'html',
-            muted: true,
+            muted: false,
             supplied: 'webmv',
             errorAlerts: false,
             warningAlerts: false

@@ -4,6 +4,8 @@ var _ = require('underscore');
 var Marionette = require('backbone.marionette');
 var ComponentFactory = require('ComponentFactory');
 var TweenMax = require('gsap');
+var App = require('App');
+
 
 var CockPitView = Marionette.ItemView.extend({
 	className: 'cockpit-view',
@@ -33,8 +35,8 @@ var CockPitView = Marionette.ItemView.extend({
 		this.createPlanets();
 		this.createCockpit();
 		this.createComponents();
-		// this.hideElementsSpace();
-		this.showElementsSpace();
+		this.hideElementsSpace();
+		this.manettePressed = false;
 		this.isInSpace = false;
 	},
 	createStars: function() {
@@ -62,6 +64,12 @@ var CockPitView = Marionette.ItemView.extend({
 			this.planets.push(planet);
 		}
 		this.planets[0].inverse = true;
+		this.planets[0].setAnimateCallBack(function() {
+			console.log('yolo')
+			App.navigate('experience/map', {
+				trigger: false
+			})
+		})
 		this.tickPlanets = 0;
 
 	},
@@ -70,8 +78,38 @@ var CockPitView = Marionette.ItemView.extend({
 		this.container.addChild(cockpit);
 
 	},
-	onSpace: function() {
+	onManettePressed: function(component) {
+		if (this.manettePressed) return;
+		this.manettePressed = true;
+		console.log('onManettePressed', component)
+		App.trigger('app:cockpitTakeOff');
+		_.delay(function() {
+			for (var i = 0, ln = this.components.length; i < ln; i++) {
+				if (this.components[i] instanceof ComponentFactory.getComponentClass('movieclip') && this.components[i] !== component)
+					TweenLite.to(this.components[i].graphic, 5, {
+						animationSpeed: 1,
+						ease: Quad.easeOut
+					})
+					// this.components[i].graphic.animationSpeed = 1;
+			}
+		}.bind(this), 2500);
 
+		this.listenTo(App, 'app:cockpitTakeOffFinished', this.onVideoTakeOffEnded);
+		_.delay(function() {
+			for (var i = 0, ln = this.components.length; i < ln; i++) {
+				if (this.components[i] instanceof ComponentFactory.getComponentClass('movieclip') && this.components[i] !== component)
+					TweenLite.to(this.components[i].graphic, 2.5, {
+						animationSpeed: 0.2,
+						ease: Quad.easeOut
+					})
+					// this.components[i].graphic.animationSpeed = 0.2;
+			}
+		}.bind(this), 12000);
+	},
+	onVideoTakeOffEnded: function() {
+		console.log('video end show planets !!!! mother fucker')
+		this.isInSpace = true;
+		this.showElementsSpace();
 	},
 	createComponents: function() {
 		var components = this.model.get('components');
@@ -79,6 +117,20 @@ var CockPitView = Marionette.ItemView.extend({
 			var ComponentClass = ComponentFactory.build(components[i]);
 			var component = new ComponentClass(components[i].config);
 			component.addToContainer(this.container);
+			if (component.hasAnimateCallBack) {
+				var cb = null;
+				switch (component.callBackName) {
+					case 'takeoff':
+						cb = this.onManettePressed.bind(this);
+						break;
+					default:
+						cb = function() {
+							console.warn('callback not defined')
+						};
+						break;
+				}
+				component.setAnimateCallBack(cb);
+			}
 			this.components.push(component);
 		}
 	},
@@ -91,17 +143,17 @@ var CockPitView = Marionette.ItemView.extend({
 	showElementsSpace: function() {
 		console.log('show showElementsSpace')
 		for (var i = 0, ln = this.stars.length; i < ln; i++) {
-			this.stars[i].visible = true; 
-			this.stars[i].alpha = 0; 
-			TweenLite.to(this.stars[i],5.5,{
-				alpha:1
+			this.stars[i].visible = true;
+			this.stars[i].alpha = 0;
+			TweenLite.to(this.stars[i], .5, {
+				alpha: 1,
 			});
 		}
 		for (var i = 0, ln = this.planets.length; i < ln; i++) {
-			this.planets[i].graphic.visible = true; 
-			this.planets[i].graphic.alpha = 0; 
-			TweenLite.to(this.planets[i].graphic,5.5,{
-				alpha:1
+			this.planets[i].graphic.visible = true;
+			this.planets[i].graphic.alpha = 0;
+			TweenLite.to(this.planets[i].graphic, .5, {
+				alpha: 1
 			});
 		}
 	},

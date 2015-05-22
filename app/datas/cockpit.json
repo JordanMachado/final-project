@@ -343,7 +343,8 @@
 			"textureName":"dial_",
 			"numberOfFrame":26,
 			"autoplay":true,
-			"loop":true
+			"loop":true,
+			"animationSpeed":0.2
 		}
 	},
 	{
@@ -356,7 +357,8 @@
 			"textureName":"dial_",
 			"numberOfFrame":26,
 			"autoplay":true,
-			"loop":true
+			"loop":true,
+			"animationSpeed":0.2
 		}
 	},
 	{
@@ -368,7 +370,8 @@
 			"textureName":"dial_",
 			"numberOfFrame":27,
 			"autoplay":true,
-			"loop":true
+			"loop":true,
+			"animationSpeed":0.2
 		}
 	},
 	{
@@ -381,7 +384,8 @@
 			"textureName":"dial_",
 			"numberOfFrame":27,
 			"autoplay":true,
-			"loop":true
+			"loop":true,
+			"animationSpeed":0.2
 		}
 	},
 	{
@@ -394,7 +398,25 @@
 				"images/cockpit/inventory-on.png"
 			]
 		}
-	}
+	},
+	{
+		"type": "movieclip",
+		"config": {
+			"x": 540,
+			"y": 1570,
+			"texturePath":"images/cockpit/manette/",
+			"textureName":"manette_",
+			"numberOfFrame":74,
+			"autoplay":false,
+			"loop":false,
+			"interactive":true,
+			"animationSpeed":0.5,
+			"hasAnimateCallBack":true,
+			"callBackWaitingEnd":false,
+			"callBackName":"takeoff"
+
+		}
+	},
 	],
 	"planets": [{
 		"type": "planet",
@@ -402,7 +424,9 @@
 			"x":230,
 			"y":610,
 			"active":true,
-			"url":"images/cockpit/planet-01.png"
+			"url":"images/cockpit/planet-01.png",
+			"hasAnimateCallBack":true,
+			"callBackWaitingEnd":false
 		}
 	},
 	{

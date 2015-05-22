@@ -5,7 +5,7 @@ var $ =  require('jquery');
 var App = require('./app/App');
 var Resources = require('Resources');
 
-window.DEBUG = false;
+window.DEBUG = true;
 
 var main = {
 	initialize:function() {
