@@ -3,19 +3,29 @@
 	"components": [
 
 		{
-			"type": "movieclip",
+			"type": "caravan",
 			"config": {
-				"x": 1460,
-				"y": 1650,
-				"texturePath": "images/western/fire/",
-				"textureName": "fire_",
-				"numberOfFrame": 24,
-				"animationSpeed": 0.5,
-				"autoplay": true,
-				"loop": true,
-				"interactive": false
-			}
+				"x": 3450,
+				"y": 2490,
+				"texturePath": "images/western/roulotte.png",
+				"movieClip": {
+					"x": 50,
+					"y": 0,
+					"texturePath": "images/western/Banjo-Man/",
+					"textureName": "Banjo-Man_",
+					"numberOfFrame": 37,
+					"animationSpeed": 0.5,
+					"autoplay": false,
+					"loop": false,
+					"interactive": false,
+					"reverse": false,
+					"sound": {
+						"url": "sounds/western/son-fire-fish.mp3",
+						"volume": 0.1
+					}
+				}
 
+			}
 		}
 
 	],

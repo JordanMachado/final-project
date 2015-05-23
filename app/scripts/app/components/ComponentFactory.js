@@ -15,6 +15,7 @@ var EagleComponent = require('./EagleComponent');
 var FishComponent = require('./FishComponent');
 var AnimalComponent = require('./AnimalComponent');
 var VultureComponent = require('./VultureComponent');
+var CaravanComponent = require('./CaravanComponent');
 
 //cockpit components
 var PlanetComponent = require('./PlanetComponent');
@@ -60,7 +61,10 @@ var ComponentFactory = {
 			case 'fish':
 				return FishComponent;
 			case 'simple':
-				return	SimpleComponent; 
+				return SimpleComponent;
+				break;
+			case 'caravan':
+				return CaravanComponent;
 				break;
 			default:
 				return AbstractComponent;

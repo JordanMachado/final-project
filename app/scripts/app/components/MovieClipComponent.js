@@ -117,7 +117,7 @@ MovieClipComponent.prototype.animate = function() {
 		this.clockWise = !this.clockWise;
 
 	} else {
-		this.graphic.play();
+		this.graphic.gotoAndPlay(0);
 		if (this.animateCallBack && this.callBackWaitingEnd === true) {
 			this.graphic.onComplete = function() {
 				this.animateCallBack(this);

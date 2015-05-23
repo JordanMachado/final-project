@@ -1,6 +1,7 @@
 var PIXI = require('pixi.js');
 var spine = require('pixi-spine');
 var resourcesData = require('../../../datas/resources.json');
+// var resourcesData = require('../../../datas/resources-test.json');
 
 var _instance = null;
 

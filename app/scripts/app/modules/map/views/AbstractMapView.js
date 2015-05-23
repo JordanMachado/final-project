@@ -21,6 +21,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	initialize: function() {
 		this.components = [];
 		this.sounds = [];
+		this.canDrag = false;
 
 		this.animation = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
 		this.initializePIXI();
@@ -209,7 +210,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 
 	},
 	onDragMoveContainer: function(e) {
-		if (this.container.dragging) {
+		if (this.container.dragging && this.canDrag) {
 
 			if (!DEBUG) {
 				var objectInformation = AbstractMapView.prototype.objectDetection.call(this, e.data.originalEvent.touches);
@@ -266,7 +267,11 @@ var AbstractMapView = Marionette.ItemView.extend({
 			return b.zIndex - a.zIndex
 		});
 	},
-	setMapPosition: function(x, y) {
+	setMapPosition:function(x,y) {
+		this.container.position.x = x;
+		this.container.position.y = y;
+	},
+	goToMapPosition: function(x, y) {
 		console.log('set map ')
 			// 1s -> 400px
 			// x -> 600px

@@ -42,40 +42,6 @@ FishComponent.prototype.initialize = function(options) {
 		.on('mousedown', this.createFish.bind(this))
 		.on('touchstart', this.createFish.bind(this))
 
-	// /* 
-	//  * Create fish container and
-	//  */
-
-	// this.containerAnim = new PIXI.Container();
-
-	// this.animation1 = new PIXI.spine.Spine(Resources.datas.fishBlue.spineData);
-	// this.containerAnim.addChild(this.animation1)
-	// animationFish.push(this.animation1);
-	// this.animation2 = new PIXI.spine.Spine(Resources.datas.fishGreen.spineData);
-	// this.containerAnim.addChild(this.animation2);
-	// animationFish.push(this.animation2);
-	// this.animation3 = new PIXI.spine.Spine(Resources.datas.fishPink.spineData);
-	// this.containerAnim.addChild(this.animation3);
-	// animationFish.push(this.animation3);
-
-	// window.animFish = this.animation1.state
-	// this.animation1.onComplete = function() {
-
-	// }
-
-
-	// // mask
-	// var mask = new PIXI.Graphics();
-	// mask.beginFill(0xFF3300);
-	// mask.lineStyle(0, 0x0000FF, 0);
-	// mask.drawRect(-this.containerAnim.width, -170, this.containerAnim.width * 4, 170);
-
-	// this.containerAnim.addChild(mask)
-	// this.containerAnim.mask = mask;
-
-	// this.graphic.addChild(this.containerAnim);
-
-
 }
 
 
@@ -126,23 +92,6 @@ FishComponent.prototype.createFish = function(e) {
 
 
 FishComponent.prototype.animate = function(e) {
-
-
-
-	// var currentAnimation = Math.floor(Math.random() * animationFish.length);
-	// animationFish[currentAnimation].visible = true;
-	// animationFish[currentAnimation].state.setAnimationByName(1, animationNames[Math.floor(Math.random() * animationNames.length)], false);
-	// var random = Math.random() * (0.9 - 0.6) + 0.6;
-	// if (Math.random() > 0.5) {
-
-	// 	this.containerAnim.scale.x = -random;
-	// 	this.containerAnim.scale.y = random;
-	// } else {
-	// 	this.containerAnim.scale.x = this.containerAnim.scale.y = random;
-	// }
-
-	// this.containerAnim.position.x = e.data.getLocalPosition(this.mapContainer).x;
-	// this.containerAnim.position.y = e.data.getLocalPosition(this.mapContainer).y;
 
 }
 

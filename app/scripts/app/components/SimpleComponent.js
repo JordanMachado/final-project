@@ -16,7 +16,7 @@ function SimpleComponent(options) {
 
 SimpleComponent.prototype.initialize = function(options) {
 	AbstractComponent.prototype.initialize.call(this, options);
-
+	this.graphic.interactive = options.interactive || false;
 	this.hitAreaTransparency = new PIXI.TransparencyHitArea.create(this.graphic)
 
 	if (DEBUG) {
