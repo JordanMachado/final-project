@@ -48,10 +48,10 @@ ThreeDSound.prototype.checkPosition = function() {
 
 	var dist = MathFX.distance(position,{x:window.innerWidth/2,y:window.innerHeight/2})
 	
-	if(dist<this.zoneRadius) {
-		this.sound.volume = Math.min(this.maxVolume,Math.abs(dist/this.zoneRadius-1))
-		// this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
-	}
+	// if(dist<this.zoneRadius) {
+	// 	this.sound.volume = Math.min(this.maxVolume,Math.abs(dist/this.zoneRadius-1))
+	// 	// this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
+	// }
 	if(dist<this.zoneRadius && !this.isPlaying) {
 		this.play()
 	} else if(dist>this.zoneRadius && this.isPlaying) {

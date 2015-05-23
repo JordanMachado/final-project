@@ -1,38 +1,47 @@
 var Const = require('Const');
 var inherits = require('inherits');
-var AbstractComponent = require('./AbstractComponent');
+var MovieClipComponent = require('./MovieClipComponent');
 var Resources = require('Resources');
 var TweenMax = require('gsap');
+var MathFX = require('MathFX');
+var _ = require('underscore');
 
 
-inherits(RockComponent, AbstractComponent);
+inherits(WaveComponent, MovieClipComponent);
 
 
-function RockComponent(options) {
-	AbstractComponent.call(this, options);
+function WaveComponent(options) {
+	MovieClipComponent.call(this, options);
 }
 
-RockComponent.prototype.initialize = function(options) {
-	this.texturePath = "images/cockpit/vague.png";
-	AbstractComponent.prototype.initialize.call(this, options);
-	this.graphic.alpha = 0;
-	console.log(this.graphic.z)
-	setInterval(function(){ this.animate(); }.bind(this), 6000);
+WaveComponent.prototype.initialize = function(options) {
+	MovieClipComponent.prototype.initialize.call(this, options);
+	this.graphic.scale.x = this.graphic.scale.y = MathFX.randomRange(0.3,1);
+	this.random = MathFX.randomRange(6,12);
+	setInterval(function(){ this.animate(); }.bind(this), this.random*1000);
 	
-
+	// setInterval(function(){ this.animate(); }.bind(this), 1000);
 }
 
 
-RockComponent.prototype.animate = function(options) {
+WaveComponent.prototype.animate = function(options) {
 	var tl = new TimelineLite();
-	tl.to(this.graphic, 1.5, {
+	var halftime = this.random/2;
+	tl.to(this.graphic, halftime, {
 		alpha:1,
-		ease:Sine.easeOut
+		ease:Sine.easeOut,
 	});
-	tl.to(this.graphic, 1, {
+	tl.to(this.graphic, halftime, {
 		alpha:0,
-		ease:Sine.easeIn
+		ease:Sine.easeIn,
+		onComplete:function(){
+			var x = this.graphic.position.x + (Math.random()*20);
+			var y = this.graphic.position.y + (Math.random()*20);
+			this.graphic.position.x  = x;
+			this.graphic.position.y = y;
+			this.graphic.scale.x = this.graphic.scale.y = MathFX.randomRange(0.3,1);
+		}.bind(this)
 	}, '-=0.1');	
 
 }
-module.exports = RockComponent;
+module.exports = WaveComponent;

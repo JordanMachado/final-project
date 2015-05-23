@@ -1,0 +1,28 @@
+{
+	"title": "western map",
+	"components": [
+
+		{
+			"type": "movieclip",
+			"config": {
+				"x": 1460,
+				"y": 1650,
+				"texturePath": "images/western/fire/",
+				"textureName": "fire_",
+				"numberOfFrame": 24,
+				"animationSpeed": 0.5,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false
+			}
+
+		}
+
+	],
+	"sounds": [],
+	"backgroundSound": {
+		"url": "sounds/western/son-background.mp3",
+		"loop": true,
+		"maxVolume": 0.1
+	}
+}

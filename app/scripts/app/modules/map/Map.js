@@ -4,6 +4,7 @@ var App = require('App');
  * Module for managing Map exercice
  */
 
+// var datas = require('../../../../datas/test.json');
 var datas = require('../../../../datas/western.json');
 
 var Backbone = require('backbone');

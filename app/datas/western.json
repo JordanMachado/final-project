@@ -1,6 +1,139 @@
 {
 	"title": "western map",
-	"components": [{
+	"components": [
+
+		{
+			"type": "movieclip",
+			"config": {
+				"x": 1460,
+				"y": 1650,
+				"texturePath": "images/western/fire/",
+				"textureName": "fire_",
+				"numberOfFrame": 24,
+				"animationSpeed": 0.5,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false
+			}
+
+		}, {
+			"type": "movieclip",
+			"config": {
+				"x": 1370,
+				"y": 1690,
+				"texturePath": "images/western/fire-fish/",
+				"textureName": "fire-fish_",
+				"numberOfFrame": 38,
+				"animationSpeed": 0.5,
+				"autoplay": false,
+				"loop": false,
+				"interactive": true,
+				"reverse": true,
+				"sound": {
+					"url": "sounds/western/son-fire-fish.mp3",
+					"volume": 0.1
+				}
+			}
+
+		},
+
+		{
+			"type": "wave",
+					"config": {
+				"x": 210,
+				"y": 1800,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		}, 
+		{
+			"type": "wave",
+					"config": {
+				"x": 395,
+				"y": 2300,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		},
+		{
+			"type": "wave",
+					"config": {
+				"x": 125,
+				"y": 2800,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		},
+		{
+			"type": "wave",
+					"config": {
+				"x": 810,
+				"y": 3100,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		},
+		{
+			"type": "wave",
+					"config": {
+				"x": 535,
+				"y": 3500,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		},
+		{
+			"type": "wave",
+					"config": {
+				"x": 1010,
+				"y": 3900,
+				"texturePath": "images/western/waves/",
+				"textureName": "waves_",
+				"numberOfFrame": 74,
+				"animationSpeed": 0.3,
+				"autoplay": true,
+				"loop": true,
+				"interactive": false,
+				"reverse": false
+			}
+
+		},
+		{
 			"type": "rock",
 			"config": {
 				"x": 3225,
@@ -128,13 +261,6 @@
 			}
 
 		}, {
-			"type": "wave",
-			"config": {
-				"x": 300,
-				"y": 2300
-			}
-
-		}, {
 			"type": "movieclip",
 			"config": {
 				"x": 3160,
@@ -163,39 +289,6 @@
 				"reverse": true,
 				"sound": {
 					"url": "sounds/western/son-skull.mp3",
-					"volume": 0.1
-				}
-			}
-
-		}, {
-			"type": "movieclip",
-			"config": {
-				"x": 2220,
-				"y": 1430,
-				"texturePath": "images/western/fire/",
-				"textureName": "fire_",
-				"numberOfFrame": 24,
-				"animationSpeed": 0.5,
-				"autoplay": true,
-				"loop": true,
-				"interactive": false
-			}
-
-		}, {
-			"type": "movieclip",
-			"config": {
-				"x": 2125,
-				"y": 1470,
-				"texturePath": "images/western/fire-fish/",
-				"textureName": "fire-fish_",
-				"numberOfFrame": 38,
-				"animationSpeed": 0.5,
-				"autoplay": false,
-				"loop": false,
-				"interactive": true,
-				"reverse": true,
-				"sound": {
-					"url": "sounds/western/son-fire-fish.mp3",
 					"volume": 0.1
 				}
 			}
@@ -241,8 +334,22 @@
 				"texturePath": "images/western/barque.png"
 			}
 		},
-
-		
+		{
+			"type": "simple",
+			"config": {
+				"x": 1905,
+				"y": 2400,
+				"texturePath": "images/western/ecurie-devant.png"
+			}
+		},
+		{
+			"type": "simple",
+			"config": {
+				"x": 1850,
+				"y": 270,
+				"texturePath": "images/western/enclos-devant.png"
+			}
+		},
 
 
 
@@ -300,8 +407,8 @@
 			"url": "sounds/western/son-cascade.mp3",
 			"maxVolume": 1
 		}, {
-			"x": 2220,
-			"y": 1500,
+			"x": 1470,
+			"y": 1690,
 			"radius": 300,
 			"url": "sounds/western/son-fire.mp3",
 			"loop": true,

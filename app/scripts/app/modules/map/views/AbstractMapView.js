@@ -226,21 +226,20 @@ var AbstractMapView = Marionette.ItemView.extend({
 				x: localPositionToStage.x - this.container.initialPosition.x,
 				y: localPositionToStage.y - this.container.initialPosition.y
 			}
-			TweenLite.killTweensOf(this.container.position);
+			// TweenLite.killTweensOf(this.container.position);
 			// if the new position is in the bounding box define by the difference of the size window/container
 			if (newPosition.x < 0 && newPosition.x > -this.container.spacing.x) {
-				// this.container.position.x = newPosition.x;
+				this.container.position.x = newPosition.x;
 
-				TweenLite.to(this.container.position, 0.2, {
-					x: newPosition.x
-				})
+				// TweenLite.to(this.container.position, 0.2, {
+				// 	x: newPosition.x
+				// })
 			}
 			if (newPosition.y < 0 && newPosition.y > -this.container.spacing.y) {
-				// this.container.position.y = newPosition.y;
-				// TweenLite.killTweensOf(this.container.position);
-				TweenLite.to(this.container.position, 0.2, {
-					y: newPosition.y
-				})
+				this.container.position.y = newPosition.y;
+				// TweenLite.to(this.container.position, 0.2, {
+				// 	y: newPosition.y
+				// })
 			}
 
 
