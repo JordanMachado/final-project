@@ -2,7 +2,15 @@
 	"datas": [
 		{
 			"name":"mapView",
-			"path":"images/western/_map.jpg"
+			"path":"images/western/map.png"
+		},
+		{
+			"name":"chefIndien",
+			"path":"images/western/chef-indien.png"
+		},
+		{
+			"name":"tonneau",
+			"path":"images/western/tonneau.png"
 		},
 		{
 			"name":"rock",
@@ -91,6 +99,10 @@
 		{
 			"name":"fishBlue",
 			"path":"images/western/fish-blue/fish-blue.json"
+		},
+		{
+			"name":"cowboy",
+			"path":"images/western/cowboy/cowboy.json"
 		},
 		{
 			"name":"eagle",

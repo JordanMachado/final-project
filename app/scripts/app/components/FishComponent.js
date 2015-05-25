@@ -25,7 +25,7 @@ FishComponent.prototype.initialize = function(options) {
 	/*
 	 * Define the touch zone water
 	 */
-
+	this.soundArgs = options.sound;
 	this.graphic = new PIXI.Container();
 	//hit area
 	this.graphic.hitArea = new PIXI.Polygon([
@@ -36,16 +36,27 @@ FishComponent.prototype.initialize = function(options) {
 		new PIXI.Point(1900, 3700),
 		new PIXI.Point(0, 5800)
 	]);
+	if (this.soundArgs)
+		this.createSound();
+
 	this.fishs = [];
 	this.graphic.interactive = true;
 	this.graphic
-		.on('mousedown', this.createFish.bind(this))
+		.on('mousedown',this.createFish.bind(this))
 		.on('touchstart', this.createFish.bind(this))
+
 
 }
 
 
 FishComponent.prototype.createFish = function(e) {
+
+	if (this.soundArgs)
+		this.createSound();
+
+		this.sound.play();
+
+
 	var containerAnim = new PIXI.Container();
 	var fish = new PIXI.Container();
 	var fishAnimation = new PIXI.spine.Spine(animationFish[Math.floor(Math.random() * animationFish.length)]);

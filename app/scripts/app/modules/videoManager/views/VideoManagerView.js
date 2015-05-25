@@ -92,8 +92,10 @@ var VideoManagerView = Marionette.CompositeView.extend({
 				this.listenToOnce(App,'app:cockpitTakeOff',this.launchVideoTakeOff);
 				break;
 			case 3:
-				console.log('trigger ta race pd')
+				console.log('transition to planet')
 				App.trigger('app:cockpitTakeOffFinished')
+				this.videoContainer.setVideo('videos/planet', 1080, 1920);
+				this.listenToOnce(App,'app:planetClicked',this.launchVideoTransitionPlanet);
 			break;
 		}
 
@@ -146,6 +148,15 @@ var VideoManagerView = Marionette.CompositeView.extend({
 		this.imageContainer.flush();
 		this.imageContainer.setImage('images/intro/stars.png', 1080, 1920);
 		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
+	},
+	launchVideoTransitionPlanet:function() {
+		console.log('launchVideoTransitionPlanet')
+		this.showVideoContainer();
+		this.imageContainer.flush();
+		this.videoContainer.once('end', function(){
+			App.videoManagerRegion.reset();
+			this.resetVideoContainer();
+		}.bind(this));
 	},
 
 	/*

@@ -29,6 +29,8 @@ ThreeDSound.prototype.initialize = function(options) {
 
 		this.container.addChild(this.visualisation);
 		this.container.alpha = 0;
+		// if(DEBUG)
+			// this.container.alpha = 1;
 		// console.log(this.container.width,this.container.height)
 
 
@@ -48,14 +50,13 @@ ThreeDSound.prototype.checkPosition = function() {
 
 	var dist = MathFX.distance(position,{x:window.innerWidth/2,y:window.innerHeight/2})
 	
-	// if(dist<this.zoneRadius) {
-	// 	this.sound.volume = Math.min(this.maxVolume,Math.abs(dist/this.zoneRadius-1))
-	// 	// this.sound.volume = Math.abs(dist/this.zoneRadius-1);	
-	// }
+	if(dist<this.zoneRadius) {
+		this.sound.volume = Math.abs(dist/this.zoneRadius-1) * this.maxVolume;	
+	}
 	if(dist<this.zoneRadius && !this.isPlaying) {
 		this.play()
 	} else if(dist>this.zoneRadius && this.isPlaying) {
-		this.stop();
+		this.pause();
 	}
 }
 

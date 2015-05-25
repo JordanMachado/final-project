@@ -19,14 +19,18 @@ CactusComponent.prototype.initialize = function(options) {
 
 CactusComponent.prototype.animate = function(e) {
 
+
 	var localposition = e.data.getLocalPosition(this.graphic)
 		// anchor to 0.5 so add the half width and height 
 	var positionX = localposition.x + (this.graphic.width / 2)
 	var positionY = localposition.y + (this.graphic.height / 2)
 	if (!this.hitAreaTransparency.isTextureTransparentAt(Math.floor(positionX), Math.floor(positionY))) {
 
-
-		var random =  MathFX.randomRange(0.7,1.3);
+		if (this.sound) {
+			if (!this.sound.isPlaying)
+				this.sound.play();
+		}
+		var random = MathFX.randomRange(0.7, 1.3);
 		var tl = new TimelineLite();
 		tl.to(this.graphic.scale, 0.5, {
 			x: random,

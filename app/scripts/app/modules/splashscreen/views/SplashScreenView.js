@@ -3,7 +3,7 @@ Backbone.$ = require('jquery');
 var _ = require('underscore');
 var Marionette = require('backbone.marionette');
 var template = require('../template/SplashScreenView.tpl');
-var VideoContainer = require('VideoContainer');
+var ImageContainer = require('ImageContainer');
 var App = require('App');
 
 var SplashScreenView = Marionette.ItemView.extend({
@@ -12,15 +12,15 @@ var SplashScreenView = Marionette.ItemView.extend({
 
 	initialize: function() {
 		console.log('splash-view');
-		this.videoSplash = new VideoContainer();
-		this.videoSplash.setVideo('videos/splash', 1080, 1920);
-		this.videoSplash.once('end', this.onVideoTutorialEnded.bind(this));
+		this.imageSplash = new ImageContainer();
+		this.imageSplash.setImage('images/splash/splash.jpg', 1080, 1920);
+		this.imageSplash.once('end', this.onVideoTutorialEnded.bind(this));
 	},
 	ui: {
 		
 	},
 	ui: {
-		videoWrapper: '#videoWrapper',
+		imageWrapper: '#imageWrapper',
 		button:'.button'
 	},
 	events: {
@@ -31,8 +31,7 @@ var SplashScreenView = Marionette.ItemView.extend({
 		App.navigate('/intro',{trigger:true});
 	},
 	onRender:function() {
-		this.ui.videoWrapper.append(this.videoSplash.el);
-		// this.videoSplash.play();
+		this.ui.imageWrapper.append(this.imageSplash.el);
 	},
 	onVideoTutorialEnded:function() {
 		console.log('end')

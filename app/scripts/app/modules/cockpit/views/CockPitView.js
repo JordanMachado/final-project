@@ -35,7 +35,7 @@ var CockPitView = Marionette.ItemView.extend({
 		this.createPlanets();
 		this.createCockpit();
 		this.createComponents();
-		this.hideElementsSpace();
+		// this.hideElementsSpace();
 		this.manettePressed = false;
 		this.isInSpace = false;
 	},
@@ -64,12 +64,7 @@ var CockPitView = Marionette.ItemView.extend({
 			this.planets.push(planet);
 		}
 		this.planets[0].inverse = true;
-		this.planets[0].setAnimateCallBack(function() {
-			console.log('yolo')
-			App.navigate('experience/map', {
-				trigger: false
-			})
-		})
+		this.planets[0].setAnimateCallBack(this.onPlanetClicked.bind(this));
 		this.tickPlanets = 0;
 
 	},
@@ -105,6 +100,16 @@ var CockPitView = Marionette.ItemView.extend({
 					// this.components[i].graphic.animationSpeed = 0.2;
 			}
 		}.bind(this), 12000);
+	},
+	onPlanetClicked: function() {
+		console.log('planets clicked')
+
+		App.trigger('app:planetClicked')
+		_.delay(function() {
+			App.navigate('experience/map', {
+				trigger: true
+			});
+		})
 	},
 	onVideoTakeOffEnded: function() {
 		console.log('video end show planets !!!! mother fucker')

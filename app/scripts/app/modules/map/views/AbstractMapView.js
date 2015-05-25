@@ -32,6 +32,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	onShow: function() {
 		this.$el.append(this.renderer.view);
 		this.animate();
+		this.createSounds();
 
 
 	},
@@ -78,7 +79,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 			y: this.container.height - window.innerHeight
 		}
 
-		this.createSounds();
+		// this.createSounds();
 		this.createComponents();
 		this.createExtras();
 
@@ -100,7 +101,6 @@ var AbstractMapView = Marionette.ItemView.extend({
 
 	},
 	createSounds: function() {
-		console.log('createSounds')
 		var sounds = this.model.get('sounds');
 
 		for (var i = 0, ln = sounds.length; i < ln; i++) {

@@ -26,6 +26,24 @@
 				}
 
 			}
+		},
+		{
+			"type": "simple",
+			"config": {
+				"x": 1315,
+				"y": 1130,
+				"texturePath": "images/western/chef-indien.png",
+				"interactive":true
+			}
+		},
+		{
+			"type": "simple",
+			"config": {
+				"x": 2192,
+				"y": 2890,
+				"texturePath": "images/western/tonneau.png",
+				"interactive":true
+			}
 		}
 
 	],

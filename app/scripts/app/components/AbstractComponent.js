@@ -54,7 +54,6 @@ AbstractComponent.prototype.setAnimateCallBack = function(cb) {
 }
 
 AbstractComponent.prototype.createSound = function() {
-	console.log('createSound');
 	this.sound = new Sound(this.soundArgs);
 };
 

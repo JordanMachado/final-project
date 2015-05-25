@@ -13,7 +13,7 @@ var RockComponent = require('./RockComponent');
 var CactusComponent = require('./CactusComponent');
 var EagleComponent = require('./EagleComponent');
 var FishComponent = require('./FishComponent');
-var AnimalComponent = require('./AnimalComponent');
+var SpineDraggable = require('./SpineDraggableComponent');
 var VultureComponent = require('./VultureComponent');
 var CaravanComponent = require('./CaravanComponent');
 
@@ -35,8 +35,8 @@ var ComponentFactory = {
 				break;
 			case 'draggable':
 				return DraggableComponent;
-			case 'animal':
-				return AnimalComponent;
+			case 'spineDraggable':
+				return SpineDraggable;
 				break;
 			case 'movieclip':
 				return MovieClipComponent;

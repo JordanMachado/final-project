@@ -42,6 +42,16 @@ var CockPit = App.module('CockPit', function(CockPit, App) {
 		console.log('show cockPitView')
 
 	};
+	CockPit.fadeOut = function() {
+		if (!this.isShown) return;
+		TweenLite.to(App.experienceRegion.$el,.5,{
+			autoAlpha:0,
+			ease:Quad.easeOut
+		})
+		this.isShown = false;
+		console.log('fadeOut cockPitView')
+
+	};
 	CockPit.hide = function() {
 		if (!this.isShown) return;
 		TweenLite.set(App.experienceRegion.$el,{

@@ -27,14 +27,18 @@ RockComponent.prototype.animate = function(e) {
 	var positionX = localposition.x + (this.graphic.width / 2)
 	var positionY = localposition.y + (this.graphic.height / 2)
 	if (!this.hitAreaTransparency.isTextureTransparentAt(Math.floor(positionX), Math.floor(positionY))) {
-		var random =  MathFX.randomRange(0.4,1.3);
+		if (this.sound) {
+			if (!this.sound.isPlaying)
+				this.sound.play();
+		}
+		var random = MathFX.randomRange(0.4, 1.3);
 		var tl = new TimelineLite();
 		tl.to(this.graphic.scale, 0.5, {
-			x:random,
-			y:random,
+			x: random,
+			y: random,
 			ease: Bounce.easeOut
 		});
-		tl.to(this.graphic.scale,random, {
+		tl.to(this.graphic.scale, random, {
 			x: 1,
 			y: 1,
 			ease: Elastic.easeOut.config(1, 0.3)
