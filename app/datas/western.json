@@ -39,7 +39,7 @@
 
 		{
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 210,
 				"y": 1800,
 				"texturePath": "images/western/waves/",
@@ -52,10 +52,9 @@
 				"reverse": false
 			}
 
-		}, 
-		{
+		}, {
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 395,
 				"y": 2300,
 				"texturePath": "images/western/waves/",
@@ -68,10 +67,9 @@
 				"reverse": false
 			}
 
-		},
-		{
+		}, {
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 125,
 				"y": 2800,
 				"texturePath": "images/western/waves/",
@@ -84,10 +82,9 @@
 				"reverse": false
 			}
 
-		},
-		{
+		}, {
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 810,
 				"y": 3100,
 				"texturePath": "images/western/waves/",
@@ -100,10 +97,9 @@
 				"reverse": false
 			}
 
-		},
-		{
+		}, {
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 535,
 				"y": 3500,
 				"texturePath": "images/western/waves/",
@@ -116,10 +112,9 @@
 				"reverse": false
 			}
 
-		},
-		{
+		}, {
 			"type": "wave",
-					"config": {
+			"config": {
 				"x": 1010,
 				"y": 3900,
 				"texturePath": "images/western/waves/",
@@ -132,8 +127,7 @@
 				"reverse": false
 			}
 
-		},
-		{
+		}, {
 			"type": "rock",
 			"config": {
 				"x": 3225,
@@ -353,7 +347,7 @@
 				"x": 1960,
 				"y": 1023,
 				"texturePath": "images/western/totem.png",
-				"interactive":true
+				"interactive": true
 			}
 		},
 
@@ -363,7 +357,7 @@
 				"x": 1688,
 				"y": 840,
 				"texturePath": "images/western/tipi-03.png",
-				"interactive":true
+				"interactive": true
 			}
 		},
 
@@ -381,7 +375,7 @@
 				"x": 1237,
 				"y": 882,
 				"texturePath": "images/western/tipi-01.png",
-				"interactive":true
+				"interactive": true
 			}
 		}, {
 			"type": "simple",
@@ -389,46 +383,25 @@
 				"x": 460,
 				"y": 1540,
 				"texturePath": "images/western/barque.png",
-				"interactive":true
+				"interactive": true
 			}
-		},
-		{
-			"type": "simple",
-			"config": {
-				"x": 1905,
-				"y": 2400,
-				"texturePath": "images/western/ecurie-devant.png",
-				"interactive":false
-			}
-		},
-		{
-			"type": "simple",
-			"config": {
-				"x": 1850,
-				"y": 270,
-				"texturePath": "images/western/enclos-devant.png",
-				"interactive":false
-			}
-		},
-		{
+		},  {
 			"type": "simple",
 			"config": {
 				"x": 1315,
 				"y": 1130,
 				"texturePath": "images/western/chef-indien.png",
-				"interactive":true
+				"interactive": true
 			}
-		},
-		{
+		}, {
 			"type": "simple",
 			"config": {
 				"x": 2192,
 				"y": 2890,
 				"texturePath": "images/western/tonneau.png",
-				"interactive":true
+				"interactive": true
 			}
-		},
-		{
+		}, {
 			"type": "caravan",
 			"config": {
 				"x": 3450,
@@ -452,8 +425,70 @@
 				}
 
 			}
+		}, {
+			"type": "draggable",
+			"config": {
+				"x": 270,
+				"y": 1030,
+				"textures": [
+					"images/western/snake-stable.png",
+					"images/western/snake-drag.png"
+				]
+			}
+		}, {
+			"type": "draggable",
+			"config": {
+				"x": 1390,
+				"y": 2690,
+				"textures": [
+					"images/western/snake-stable.png",
+					"images/western/snake-drag.png"
+				]
+			}
+		}, {
+			"type": "draggable",
+			"config": {
+				"x": 3020,
+				"y": 1160,
+				"textures": [
+					"images/western/snake-stable.png",
+					"images/western/snake-drag.png"
+				]
+			}
+		}, {
+			"type": "draggable",
+			"config": {
+				"x": 3220,
+				"y": 2120,
+				"textures": [
+					"images/western/snake-stable.png",
+					"images/western/snake-drag.png"
+				]
+			}
+		}, {
+			"type": "draggable",
+			"config": {
+				"x": 3780,
+				"y": 3630,
+				"textures": [
+					"images/western/snake-stable.png",
+					"images/western/snake-drag.png"
+				]
+			}
 		},
 
+
+		{
+			"type": "cowboy",
+			"config": {
+				"x": 2808,
+				"y": 3900,
+				"hasAnimateCallBack": true,
+				"callBackWaitingEnd": false,
+				"callBackName": "cowboyupdate"
+			}
+
+		},
 
 
 		{
@@ -501,6 +536,23 @@
 				"spineData": "horse"
 			}
 		},
+		{
+			"type": "simple",
+			"config": {
+				"x": 1905,
+				"y": 2400,
+				"texturePath": "images/western/ecurie-devant.png",
+				"interactive": false
+			}
+		}, {
+			"type": "simple",
+			"config": {
+				"x": 1850,
+				"y": 270,
+				"texturePath": "images/western/enclos-devant.png",
+				"interactive": false
+			}
+		}
 
 	],
 	"sounds": [{
@@ -523,8 +575,7 @@
 			"url": "sounds/western/son-waves.mp3",
 			"loop": true,
 			"maxVolume": 0.05
-		},
-		 {
+		}, {
 			"x": 1700,
 			"y": 1000,
 			"radius": 700,
@@ -537,6 +588,6 @@
 	"backgroundSound": {
 		"url": "sounds/western/son-background.mp3",
 		"loop": true,
-		"volume": 0.03
+		"volume": 0.3
 	}
 }

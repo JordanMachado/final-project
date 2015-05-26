@@ -1,6 +1,4 @@
-var PIXI = require('pixi.js')
-
-
+var TweenMax = require('gsap');
 /*
  *  AbstractSound
  */
@@ -48,11 +46,23 @@ AbstractSound.prototype.onEnded = function() {
 	console.log('ended')
 	this.isPlaying = false;
 }
+AbstractSound.prototype.fadeOut = function(cb) {
+	Tweenlite.to(this.sound,0.5,{
+		volume:0,
+		onComplete:function(){
+
+			if(cb)
+				cb();
+		}
+	})
+	this.isPlaying = false;
+}
 
 
-
-AbstractSound.prototype.reset = function() {
-	console.log('reset sound');
+AbstractSound.prototype.kill = function() {
+	delete this.sound;
+	delete this.isPlaying;
+	delete this;
 }
 
 module.exports = AbstractSound;

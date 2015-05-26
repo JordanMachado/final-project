@@ -13,16 +13,34 @@ function DraggableComponent(options) {
 
 DraggableComponent.prototype.initialize = function(options) {
 	// console.log('draggable')
-	this.texturePath = 'images/western/skull/skull_1.png';
-	AbstractComponent.prototype.initialize.call(this, options);
+	
+
+	var textureStable = options.textures[0];
+	var textureDrag = options.textures[1];
+	
+	this.texture1 =  PIXI.Texture.fromImage(textureStable);
+	this.texture2 = PIXI.Texture.fromImage(textureDrag);
+	this.soundArgs = options.sound;
+	this.hasAnimateCallBack = options.hasAnimateCallBack;
+	this.callBackName = options.callBackName;
+	this.callBackWaitingEnd = options.callBackWaitingEnd;
+
+	this.graphic = new PIXI.Sprite(this.texture1);
+	this.graphic.position.x = options.x;
+	this.graphic.position.y = options.y;
+	this.graphic.anchor.x = this.graphic.anchor.y = 0.5;
+
+	this.graphic.interactive = true;
+	if (this.soundArgs)
+		this.createSound();
 
 	this.graphic
-		.on('mousedown', this.dragStart)
-		.on('touchstart', this.dragStart)
-		.on('mouseup', this.dragEnd)
-		.on('mouseupoutside', this.dragEnd)
-		.on('touchend', this.dragEnd)
-		.on('touchendoutside', this.dragEnd)
+		.on('mousedown', this.dragStart.bind(this))
+		.on('touchstart', this.dragStart.bind(this))
+		.on('mouseup', this.dragEnd.bind(this))
+		.on('mouseupoutside', this.dragEnd.bind(this))
+		.on('touchend', this.dragEnd.bind(this))
+		.on('touchendoutside', this.dragEnd.bind(this))
 		.on('mousemove', this.dragMove)
 		.on('touchmove', this.dragMove);
 
@@ -31,11 +49,12 @@ DraggableComponent.prototype.initialize = function(options) {
 }
 
 DraggableComponent.prototype.dragStart = function(e) {
-	if (!this.data && !this.identifier) {
-		this.data = e.data;
-		this.identifier = e.data.identifier;
-		this.dragging = true;
-		this.initialPosition = this.data.getLocalPosition(this);
+	if (!this.graphic.data && !this.graphic.identifier) {
+		this.graphic.data = e.data;
+		this.graphic.identifier = e.data.identifier;
+		this.graphic.dragging = true;
+		this.graphic.initialPosition = this.graphic.data.getLocalPosition(this.graphic);
+		this.graphic.texture = this.texture2;
 	}
 };
 
@@ -56,10 +75,11 @@ DraggableComponent.prototype.dragMove = function(e) {
 };
 
 DraggableComponent.prototype.dragEnd = function(e) {
-	if (e.data.identifier == this.identifier) {
-		this.dragging = false;
-		this.data = null;
-		this.identifier = null;
+	if (e.data.identifier == this.graphic.identifier) {
+		this.graphic.dragging = false;
+		this.graphic.data = null;
+		this.graphic.identifier = null;
+		this.graphic.texture = this.texture1;
 	}
 	
 };

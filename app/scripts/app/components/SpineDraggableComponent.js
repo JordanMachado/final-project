@@ -17,18 +17,16 @@ function SpineDraggable(options) {
 SpineDraggable.prototype.initialize = function(options) {
 
 	var spineData = null;
+	this.type = options.spineData;
 	switch (options.spineData) {
 		case 'buffalo':
-			var spineData = Resources.datas.buffalo.spineData;
+			spineData = Resources.datas.buffalo.spineData;
 			break;
 		case 'horse':
-			var spineData = Resources.datas.horse.spineData;
-			break;
-		case 'snake':
-			var spineData = Resources.datas.buffalo.spineData;
+			spineData = Resources.datas.horse.spineData;
 			break;
 		default:
-			var spineData = Resources.datas.buffalo.spineData;
+			spineData = Resources.datas.buffalo.spineData;
 			break;
 	}
 	this.graphic = new PIXI.spine.Spine(spineData);

@@ -2,7 +2,7 @@
 	"datas": [
 		{
 			"name":"mapView",
-			"path":"images/western/map.png"
+			"path":"images/western/map.jpg"
 		},
 		{
 			"name":"chefIndien",
@@ -15,6 +15,22 @@
 		{
 			"name":"rock",
 			"path":"images/western/rock.png"
+		},
+		{
+			"name":"cheval",
+			"path":"images/western/cheval.png"
+		},
+		{
+			"name":"cowboycheval",
+			"path":"images/western/cheval+cowboy.png"
+		},
+		{
+			"name":"snake-stable",
+			"path":"images/western/snake-stable.png"
+		},
+		{
+			"name":"snake-drag",
+			"path":"images/western/snake-drag.png"
 		},
 		{
 			"name":"rock1",

@@ -16,6 +16,7 @@ var FishComponent = require('./FishComponent');
 var SpineDraggable = require('./SpineDraggableComponent');
 var VultureComponent = require('./VultureComponent');
 var CaravanComponent = require('./CaravanComponent');
+var CowboyComponent = require('./CowboyComponent');
 
 //cockpit components
 var PlanetComponent = require('./PlanetComponent');
@@ -27,6 +28,9 @@ var ComponentFactory = {
 	},
 	getComponentClass: function(type) {
 		switch (type) {
+			case 'cowboy':
+				return CowboyComponent;
+			break;
 			case 'rock':
 				return RockComponent;
 				break;

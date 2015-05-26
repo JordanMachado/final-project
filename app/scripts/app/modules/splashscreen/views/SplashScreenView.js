@@ -5,6 +5,7 @@ var Marionette = require('backbone.marionette');
 var template = require('../template/SplashScreenView.tpl');
 var ImageContainer = require('ImageContainer');
 var App = require('App');
+var Sound = require('Sound');
 
 var SplashScreenView = Marionette.ItemView.extend({
 	className: 'splash-view',
@@ -15,9 +16,6 @@ var SplashScreenView = Marionette.ItemView.extend({
 		this.imageSplash = new ImageContainer();
 		this.imageSplash.setImage('images/splash/splash.jpg', 1080, 1920);
 		this.imageSplash.once('end', this.onVideoTutorialEnded.bind(this));
-	},
-	ui: {
-		
 	},
 	ui: {
 		imageWrapper: '#imageWrapper',
