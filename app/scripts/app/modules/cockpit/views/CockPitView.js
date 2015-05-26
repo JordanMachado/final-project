@@ -35,7 +35,7 @@ var CockPitView = Marionette.ItemView.extend({
 		this.createPlanets();
 		this.createCockpit();
 		this.createComponents();
-		// this.hideElementsSpace();
+		this.hideElementsSpace();
 		this.manettePressed = false;
 		this.isInSpace = false;
 	},

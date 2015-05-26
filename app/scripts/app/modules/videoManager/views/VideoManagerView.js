@@ -9,6 +9,7 @@ var App = require('App');
 var $ = require('jquery');
 var VideoContainer = require('VideoContainer');
 var ImageContainer = require('ImageContainer');
+var Sound = require('Sound')
 
 var VideoManagerView = Marionette.CompositeView.extend({
 	className: 'videoManager-view',
@@ -66,6 +67,12 @@ var VideoManagerView = Marionette.CompositeView.extend({
 	showVideoContainer: function() {
 		this.videoContainer.show();
 		this.videoContainer.play();
+		if (this.sound) {
+			this.sound.fadeOut(function() {
+				this.sound.kill()
+			}.bind(this));
+
+		}
 	},
 	resetVideoContainer: function() {
 		this.videoContainer.hide();
@@ -81,22 +88,50 @@ var VideoManagerView = Marionette.CompositeView.extend({
 			case 0:
 				console.log('intro video')
 				this.videoContainer.setVideo('videos/intro', 1080, 1920);
+				this.sound = new Sound({
+					url: "sounds/intro/ambiance-space.mp3",
+					loop: true,
+					volume: 0.3,
+					maxVolume: 0.3
+				});
+				this.sound.fadeIn();
 				break;
 			case 1:
 				console.log('construction-fusee video')
+				this.sound = new Sound({
+					url: "sounds/intro/ambiance-construction-fusee.mp3",
+					loop: true,
+					volume: 0.1,
+					maxVolume: 0.1
+				});
+				this.sound.fadeIn();
 				this.videoContainer.setVideo('videos/cockpit', 1080, 1920);
 				break;
 			case 2:
 				console.log('cockpit in space video')
+				this.sound = new Sound({
+					url: "sounds/intro/ambiance-cockpit.mp3",
+					loop: true,
+					volume: 0.1,
+					maxVolume: 0.1
+				});
+				this.sound.fadeIn();
 				this.videoContainer.setVideo('videos/decollage', 1080, 1920);
-				this.listenToOnce(App,'app:cockpitTakeOff',this.launchVideoTakeOff);
+				this.listenToOnce(App, 'app:cockpitTakeOff', this.launchVideoTakeOff);
 				break;
 			case 3:
 				console.log('transition to planet')
+				this.sound = new Sound({
+					url: "sounds/intro/ambiance-space.mp3",
+					loop: true,
+					volume: 0.1,
+					maxVolume: 0.1
+				});
+				this.sound.fadeIn();
 				App.trigger('app:cockpitTakeOffFinished')
 				this.videoContainer.setVideo('videos/planet', 1080, 1920);
-				this.listenToOnce(App,'app:planetClicked',this.launchVideoTransitionPlanet);
-			break;
+				this.listenToOnce(App, 'app:planetClicked', this.launchVideoTransitionPlanet);
+				break;
 		}
 
 		this.imageContainer.show();
@@ -142,18 +177,18 @@ var VideoManagerView = Marionette.CompositeView.extend({
 
 		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
 	},
-	launchVideoTakeOff:function() {
+	launchVideoTakeOff: function() {
 		console.log('start video decollage');
 		this.showVideoContainer();
 		this.imageContainer.flush();
 		this.imageContainer.setImage('images/intro/stars.png', 1080, 1920);
 		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
 	},
-	launchVideoTransitionPlanet:function() {
+	launchVideoTransitionPlanet: function() {
 		console.log('launchVideoTransitionPlanet')
 		this.showVideoContainer();
 		this.imageContainer.flush();
-		this.videoContainer.once('end', function(){
+		this.videoContainer.once('end', function() {
 			App.videoManagerRegion.reset();
 			this.resetVideoContainer();
 		}.bind(this));
@@ -178,7 +213,7 @@ var VideoManagerView = Marionette.CompositeView.extend({
 	},
 	toogleInteractivity: function() {
 		this.interactive = !this.interactive;
-		console.log('toogleInteractivity'+this.interactive,this.step)
+		console.log('toogleInteractivity' + this.interactive, this.step)
 		if (this.children)
 			this.children.call("toogleInteractivity");
 	}

@@ -16,8 +16,8 @@ AbstractSound.prototype.initialize = function(options) {
 	this.sound.loop = options.loop;
 	if(options.volume)
 		this.sound.volume = options.volume;
-	if(options.maxVolume)
-		this.sound.volume = options.maxVolume;
+
+		this.maxVolume = options.maxVolume || options.volume;
 	
 	// this.sound.volume = 0
 }
@@ -46,8 +46,22 @@ AbstractSound.prototype.onEnded = function() {
 	console.log('ended')
 	this.isPlaying = false;
 }
+AbstractSound.prototype.fadeIn = function(cb) {
+	this.sound.volume = 0;
+	this.play();
+	console.log(this.maxVolume)
+	TweenLite.to(this.sound,1,{
+		volume:this.maxVolume,
+		onComplete:function(){
+
+			if(cb)
+				cb();
+		}
+	})
+	this.isPlaying = false;
+}
 AbstractSound.prototype.fadeOut = function(cb) {
-	Tweenlite.to(this.sound,0.5,{
+	TweenLite.to(this.sound,1,{
 		volume:0,
 		onComplete:function(){
 

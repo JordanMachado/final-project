@@ -15,24 +15,34 @@ var SplashScreenView = Marionette.ItemView.extend({
 		console.log('splash-view');
 		this.imageSplash = new ImageContainer();
 		this.imageSplash.setImage('images/splash/splash.jpg', 1080, 1920);
-		this.imageSplash.once('end', this.onVideoTutorialEnded.bind(this));
+
+		this.sound = new Sound({
+			url: "sounds/intro/ambiance-space.mp3",
+			loop: true,
+			volume: 0.3,
+			maxVolume: 0.3
+		});
 	},
 	ui: {
 		imageWrapper: '#imageWrapper',
-		button:'.button'
+		button: '.button'
 	},
 	events: {
 		'click @ui.button': 'onClickButton'
 	},
-	onClickButton:function() {
+	onClickButton: function() {
 		console.log('launch tutorial');
-		App.navigate('/intro',{trigger:true});
+		this.sound.fadeOut(function(){
+			this.sound.kill()
+		}.bind(this));
+		App.navigate('/intro', {
+			trigger: true
+		});
+
 	},
-	onRender:function() {
+	onRender: function() {
 		this.ui.imageWrapper.append(this.imageSplash.el);
-	},
-	onVideoTutorialEnded:function() {
-		console.log('end')
+		this.sound.fadeIn();
 	}
 
 })
