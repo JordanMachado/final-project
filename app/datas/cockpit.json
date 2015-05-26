@@ -396,7 +396,10 @@
 			"textures":[
 				"images/cockpit/inventory-off.png",
 				"images/cockpit/inventory-on.png"
-			]
+			],
+			"hasAnimateCallBack":true,
+			"callBackWaitingEnd":false,
+			"callBackName":"inventory"
 		}
 	},
 	{
@@ -421,8 +424,8 @@
 	"planets": [{
 		"type": "planet",
 		"config": {
-			"x":230,
-			"y":610,
+			"x":232,
+			"y":560,
 			"active":true,
 			"url":"images/cockpit/planet-01.png",
 			"hasAnimateCallBack":true,
@@ -432,8 +435,8 @@
 	{
 		"type": "planet",
 		"config": {
-			"x":860,
-			"y":860,
+			"x":815,
+			"y":785,
 			"active":true,
 			"url":"images/cockpit/planet-02.png"
 		}
@@ -441,8 +444,8 @@
 	{
 		"type": "planet",
 		"config": {
-			"x":350,
-			"y":1155,
+			"x":370,
+			"y":1130,
 			"active":true,
 			"url":"images/cockpit/planet-03.png"
 		}

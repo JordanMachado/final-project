@@ -41,15 +41,15 @@ SimpleComponent.prototype.animate = function(e) {
 		// anchor to 0.5 so add the half width and height 
 	var positionX = localposition.x + (this.graphic.width / 2)
 	var positionY = localposition.y + (this.graphic.height / 2)
-	if (DEBUG) {
-		var visualisation = new PIXI.Graphics();
-		visualisation.lineStyle(0);
-		visualisation.beginFill(0xFF0000, 1);
-		visualisation.drawCircle(0, 0, 5);
-		visualisation.position.x = localposition.x
-		visualisation.position.y = localposition.y
-		this.testContainer.addChild(visualisation);
-	}
+	// if (DEBUG) {
+	// 	var visualisation = new PIXI.Graphics();
+	// 	visualisation.lineStyle(0);
+	// 	visualisation.beginFill(0xFF0000, 1);
+	// 	visualisation.drawCircle(0, 0, 5);
+	// 	visualisation.position.x = localposition.x
+	// 	visualisation.position.y = localposition.y
+	// 	this.testContainer.addChild(visualisation);
+	// }
 
 	if (!this.hitAreaTransparency.isTextureTransparentAt(Math.floor(positionX), Math.floor(positionY)))
 		AbstractComponent.prototype.animate.call(this)

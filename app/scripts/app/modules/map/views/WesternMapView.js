@@ -12,7 +12,7 @@ var WesternMapView = AbstractMapView.extend({
 	onRender: function() {
 		this.setMapPosition(-1870, -2160)
 		this.canDrag = false;
-		// setInterval(this.createVulture.bind(this),35000);
+		setInterval(this.createVulture.bind(this),35000);
 	},
 	createVulture: function() {
 		console.log('createVulture');

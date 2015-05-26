@@ -26,9 +26,21 @@ $size : 30px;
 }
 
 .cockpit-view {
-	img {
-		position:absolute;
-		z-index: -1;
+	.inventery {
+		position: absolute;
+		left: 50%;
+		top: 66%;
+		transform: translate(-50%,-50%);
+		opacity: 1;
+		pointer-events: none;
+		
+		transition:0.4s;
+		transition-property: opacity;
+		transition-timing-function:ease-out;
+		&.hidden {
+			opacity: 0;
+		}
+
 	}
 }
 

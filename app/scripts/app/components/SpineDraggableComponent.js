@@ -1,5 +1,3 @@
-
-
 var Const = require('Const');
 var inherits = require('inherits');
 var AbstractComponent = require('./AbstractComponent');
@@ -15,7 +13,7 @@ function SpineDraggable(options) {
 }
 
 SpineDraggable.prototype.initialize = function(options) {
-
+	this.soundArgs = options.sound;
 	var spineData = null;
 	this.type = options.spineData;
 	switch (options.spineData) {
@@ -47,6 +45,9 @@ SpineDraggable.prototype.initialize = function(options) {
 		.on('mousemove', this.dragMove)
 		.on('touchmove', this.dragMove);
 
+	if (this.soundArgs)
+		this.createSound();
+
 }
 
 /*
@@ -55,20 +56,24 @@ SpineDraggable.prototype.initialize = function(options) {
 
 SpineDraggable.prototype.dragStart = function(e) {
 	console.log('drag start animal')
-	// this.mapContainer.interactive = false;
+		// this.mapContainer.interactive = false;
 	if (!this.graphic.data && !this.graphic.identifier) {
+		if (this.sound) {
+			if (!this.sound.isPlaying)
+				this.sound.play();
+		}
 		this.graphic.data = e.data;
 		this.graphic.identifier = e.data.identifier;
 		this.graphic.dragging = true;
 		this.graphic.initialPosition = this.graphic.data.getLocalPosition(this.graphic);
 		this.graphic.state.setAnimationByName(1, "drag", true);
 
-		
+
 	}
 };
 
 SpineDraggable.prototype.dragMove = function(e) {
-	
+
 	if (this.dragging) {
 
 		if (e.data.identifier == this.identifier) {
@@ -79,9 +84,9 @@ SpineDraggable.prototype.dragMove = function(e) {
 			}
 			this.position.x = newPosition.x;
 			this.position.y = newPosition.y;
-			
+
 		}
-		
+
 		// e.stopped = true;
 	}
 };
@@ -89,11 +94,11 @@ SpineDraggable.prototype.dragMove = function(e) {
 
 SpineDraggable.prototype.dragEnd = function(e) {
 	// if (e.data.identifier == this.identifier) {
-		console.log('drag end animal Component')
-		this.state.setAnimationByName(1, "stable", true);
-		this.dragging = false;
-		this.data = null;
-		this.identifier = null;
+	console.log('drag end animal Component')
+	this.state.setAnimationByName(1, "stable", true);
+	this.dragging = false;
+	this.data = null;
+	this.identifier = null;
 
 	// }
 

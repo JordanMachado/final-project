@@ -29,7 +29,7 @@ var CockPit = App.module('CockPit', function(CockPit, App) {
 			autoAlpha:1
 		})
 		this.isShown = true;
-		console.log('show cockPitView')
+		// console.log('show cockPitView')
 
 	};
 	CockPit.fadeIn = function() {
@@ -39,7 +39,7 @@ var CockPit = App.module('CockPit', function(CockPit, App) {
 			ease:Quad.easeOut
 		})
 		this.isShown = true;
-		console.log('show cockPitView')
+		// console.log('show cockPitView')
 
 	};
 	CockPit.fadeOut = function() {
@@ -49,7 +49,7 @@ var CockPit = App.module('CockPit', function(CockPit, App) {
 			ease:Quad.easeOut
 		})
 		this.isShown = false;
-		console.log('fadeOut cockPitView')
+		// console.log('fadeOut cockPitView')
 
 	};
 	CockPit.hide = function() {

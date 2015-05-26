@@ -10,6 +10,12 @@ function ButtonComponent(options) {
 }
 
 ButtonComponent.prototype.initialize = function(options) {
+
+	this.hasAnimateCallBack = options.hasAnimateCallBack;
+	this.callBackName = options.callBackName;
+	this.callBackWaitingEnd = options.callBackWaitingEnd;
+	
+	this.soundArgs = options.sound;
 	var textureOn = options.textures[0];
 	var textureOff = options.textures[1];
 
@@ -26,6 +32,9 @@ ButtonComponent.prototype.initialize = function(options) {
 	this.graphic
 		.on('mousedown', this.animate.bind(this))
 		.on('touchstart', this.animate.bind(this))
+
+	if (this.soundArgs)
+		this.createSound();
 
 }
 

@@ -12,7 +12,6 @@ var SplashScreenView = Marionette.ItemView.extend({
 	template: _.template(template),
 
 	initialize: function() {
-		console.log('splash-view');
 		this.imageSplash = new ImageContainer();
 		this.imageSplash.setImage('images/splash/splash.jpg', 1080, 1920);
 
@@ -43,7 +42,11 @@ var SplashScreenView = Marionette.ItemView.extend({
 	onRender: function() {
 		this.ui.imageWrapper.append(this.imageSplash.el);
 		this.sound.fadeIn();
-	}
+	},
+	onDestroy:function() {
+		this.sound.stop();
+		this.sound.kill();
+	}	
 
 })
 

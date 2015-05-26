@@ -28,13 +28,11 @@ App.addRegions({
 });
 
 App.splashRegion.on("before:swap", function(view, region, options) {
-	console.log('swapp')
 });
 
 App.on('start', function(options) {
 
 	this.loader = document.querySelector(options.loader)
-	console.log(this.loader);
 
 	if (Backbone.history) {
 		Backbone.history.start();
@@ -92,17 +90,13 @@ App.router.on('route:cockpit', function() {
 App.router.on('route:map', function() {
 
 
-	// _.delay(function(){
-	// 	App.CockPit.fadeOut();
+	_.delay(function(){
+		App.CockPit.fadeOut();
+	},3500);
+	_.delay(function(){
+		App.Map.fadeIn();	
+	},5000);
 
-	// },3500);
-	// _.delay(function(){
-	// 	App.Map.fadeIn();	
-	// },5000);
-
-	if (DEBUG) {
-		App.Map.fadeIn();
-	}
 
 });
 

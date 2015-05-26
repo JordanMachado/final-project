@@ -1,1 +1,1 @@
-<H1>coucou</H1>
+<img src="images/cockpit/inventory.png" alt="" class="inventery hidden">

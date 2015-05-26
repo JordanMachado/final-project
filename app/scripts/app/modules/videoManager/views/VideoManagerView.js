@@ -101,8 +101,8 @@ var VideoManagerView = Marionette.CompositeView.extend({
 				this.sound = new Sound({
 					url: "sounds/intro/ambiance-construction-fusee.mp3",
 					loop: true,
-					volume: 0.1,
-					maxVolume: 0.1
+					volume: 0.05,
+					maxVolume: 0.05
 				});
 				this.sound.fadeIn();
 				this.videoContainer.setVideo('videos/cockpit', 1080, 1920);
@@ -112,8 +112,8 @@ var VideoManagerView = Marionette.CompositeView.extend({
 				this.sound = new Sound({
 					url: "sounds/intro/ambiance-cockpit.mp3",
 					loop: true,
-					volume: 0.1,
-					maxVolume: 0.1
+					volume: 0.3,
+					maxVolume: 0.3
 				});
 				this.sound.fadeIn();
 				this.videoContainer.setVideo('videos/decollage', 1080, 1920);
@@ -124,8 +124,8 @@ var VideoManagerView = Marionette.CompositeView.extend({
 				this.sound = new Sound({
 					url: "sounds/intro/ambiance-space.mp3",
 					loop: true,
-					volume: 0.1,
-					maxVolume: 0.1
+					volume: 0.3,
+					maxVolume: 0.3
 				});
 				this.sound.fadeIn();
 				App.trigger('app:cockpitTakeOffFinished')
@@ -181,7 +181,7 @@ var VideoManagerView = Marionette.CompositeView.extend({
 		console.log('start video decollage');
 		this.showVideoContainer();
 		this.imageContainer.flush();
-		this.imageContainer.setImage('images/intro/stars.png', 1080, 1920);
+		this.imageContainer.setImage('images/intro/stars.jpg', 1080, 1920);
 		this.videoContainer.once('end', this.onvideoContainerEnded.bind(this));
 	},
 	launchVideoTransitionPlanet: function() {
@@ -213,7 +213,7 @@ var VideoManagerView = Marionette.CompositeView.extend({
 	},
 	toogleInteractivity: function() {
 		this.interactive = !this.interactive;
-		console.log('toogleInteractivity' + this.interactive, this.step)
+		// console.log('toogleInteractivity' + this.interactive, this.step)
 		if (this.children)
 			this.children.call("toogleInteractivity");
 	}

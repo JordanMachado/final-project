@@ -13,12 +13,12 @@ function DraggableComponent(options) {
 
 DraggableComponent.prototype.initialize = function(options) {
 	// console.log('draggable')
-	
 
+	this.soundArgs = options.sound;
 	var textureStable = options.textures[0];
 	var textureDrag = options.textures[1];
-	
-	this.texture1 =  PIXI.Texture.fromImage(textureStable);
+
+	this.texture1 = PIXI.Texture.fromImage(textureStable);
 	this.texture2 = PIXI.Texture.fromImage(textureDrag);
 	this.soundArgs = options.sound;
 	this.hasAnimateCallBack = options.hasAnimateCallBack;
@@ -44,12 +44,16 @@ DraggableComponent.prototype.initialize = function(options) {
 		.on('mousemove', this.dragMove)
 		.on('touchmove', this.dragMove);
 
-		
+
 
 }
 
 DraggableComponent.prototype.dragStart = function(e) {
 	if (!this.graphic.data && !this.graphic.identifier) {
+		if (this.sound) {
+			if (!this.sound.isPlaying)
+				this.sound.play();
+		}
 		this.graphic.data = e.data;
 		this.graphic.identifier = e.data.identifier;
 		this.graphic.dragging = true;
@@ -81,7 +85,7 @@ DraggableComponent.prototype.dragEnd = function(e) {
 		this.graphic.identifier = null;
 		this.graphic.texture = this.texture1;
 	}
-	
+
 };
 
 

@@ -32,7 +32,7 @@ var AbstractMapView = Marionette.ItemView.extend({
 	onShow: function() {
 		this.$el.append(this.renderer.view);
 		this.animate();
-		// this.backgroundSound.play();
+		this.backgroundSound.play();
 
 
 	},
@@ -114,11 +114,10 @@ var AbstractMapView = Marionette.ItemView.extend({
 
 	},
 	createExtras: function() {
-		console.log('extras')
-		this.compassObject = {
-			name:'compass',
-			touchList:[]
-		};
+		// this.compassObject = {
+		// 	name:'compass',
+		// 	touchList:[]
+		// };
 			// var extras = this.model.get('extras');
 
 		// for (var i = 0, ln = extras.length; i < ln; i++) {

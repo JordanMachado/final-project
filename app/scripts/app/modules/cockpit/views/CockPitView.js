@@ -5,11 +5,12 @@ var Marionette = require('backbone.marionette');
 var ComponentFactory = require('ComponentFactory');
 var TweenMax = require('gsap');
 var App = require('App');
-
+var template = require('../template/CockPitView.tpl');
+var $ = require('jquery')
 
 var CockPitView = Marionette.ItemView.extend({
 	className: 'cockpit-view',
-	template: _.template(''),
+	template: _.template(template),
 
 	initialize: function() {
 		this.components = [];
@@ -67,6 +68,8 @@ var CockPitView = Marionette.ItemView.extend({
 		this.planets[0].setAnimateCallBack(this.onPlanetClicked.bind(this));
 		this.tickPlanets = 0;
 
+		window.planets = this.planets;
+
 	},
 	createCockpit: function() {
 		var cockpit = new PIXI.Sprite.fromImage('images/cockpit/cockpit.png');
@@ -105,14 +108,14 @@ var CockPitView = Marionette.ItemView.extend({
 		console.log('planets clicked')
 
 		App.trigger('app:planetClicked')
-		_.delay(function() {
+		this.hideElementsSpace();
+		// _.delay(function() {
 			App.navigate('experience/map', {
 				trigger: true
 			});
-		})
+		// })
 	},
 	onVideoTakeOffEnded: function() {
-		console.log('video end show planets !!!! mother fucker')
 		this.isInSpace = true;
 		this.showElementsSpace();
 	},
@@ -128,6 +131,9 @@ var CockPitView = Marionette.ItemView.extend({
 					case 'takeoff':
 						cb = this.onManettePressed.bind(this);
 						break;
+					case 'inventory':
+						cb = this.onClickInventory.bind(this);
+						break;
 					default:
 						cb = function() {
 							console.warn('callback not defined')
@@ -139,6 +145,9 @@ var CockPitView = Marionette.ItemView.extend({
 			this.components.push(component);
 		}
 	},
+	onClickInventory:function() {
+		$('.inventery').toggleClass('hidden')
+	},
 	animate: function() {
 		if (this.isInSpace)
 			this.animateComponent();
@@ -146,7 +155,11 @@ var CockPitView = Marionette.ItemView.extend({
 		this.renderer.render(this.stage);
 	},
 	showElementsSpace: function() {
-		console.log('show showElementsSpace')
+		for (var i = 0, ln = this.planets.length; i < ln; i++) {
+			this.planets[i].graphic.visible = true;
+			this.planets[i].graphic.alpha = 1;
+		}
+
 		for (var i = 0, ln = this.stars.length; i < ln; i++) {
 			this.stars[i].visible = true;
 			this.stars[i].alpha = 0;
@@ -154,16 +167,9 @@ var CockPitView = Marionette.ItemView.extend({
 				alpha: 1,
 			});
 		}
-		for (var i = 0, ln = this.planets.length; i < ln; i++) {
-			this.planets[i].graphic.visible = true;
-			this.planets[i].graphic.alpha = 0;
-			TweenLite.to(this.planets[i].graphic, .5, {
-				alpha: 1
-			});
-		}
+		
 	},
 	hideElementsSpace: function() {
-		console.log('hide')
 		for (var i = 0, ln = this.stars.length; i < ln; i++) {
 			this.stars[i].visible = false;
 		}
