@@ -14,8 +14,7 @@ var AvatarView = Marionette.ItemView.extend({
 	},
 	events: {
 		'touchstart': 'onTouch',
-		//!debug uncomment
-		// 'touchend': 'onTouch'
+		'touchend': 'onTouch'
 	},
 	initialize:function() {
 		this.interactive = false;

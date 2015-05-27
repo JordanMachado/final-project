@@ -24,7 +24,7 @@ var Map = App.module('Map', function(Map, App) {
 
 	Map.fadeIn = function() {
 		App.experienceRegion.show(mapView);
-		// set z-index to -1 for the set the video manager on top
+		// set z-index to 1 for the set the video manager on top
 		App.experienceRegion.$el.css('z-index','1');
 		TweenLite.to(App.experienceRegion.$el,1.5,{
 			autoAlpha:1,
