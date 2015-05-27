@@ -24,8 +24,9 @@ var AvatarView = Marionette.ItemView.extend({
 	},
 	onTouch: function(e) {
 		if(!this.interactive) return;
-		var touch = (DEBUG) ? 1 : 3;
-		if (e.originalEvent.touches.length == touch) {
+		var touch = 1;
+		console.log(e.originalEvent.touches.length)
+		if (e.originalEvent.touches.length >= touch) {
 			this.model.set('active', true)
 		} else {
 			this.model.set('active', false)
